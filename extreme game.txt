@@ -39,7 +39,7 @@ Combat
 
 
 
-
+Ved combat skal damage udregnes ud fra level. Brug multiplier fra skill * med level
 
 
 damage : 1.5
