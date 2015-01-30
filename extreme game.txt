@@ -1,0 +1,47 @@
+Game
+NPC
+Player
+Health
+Map
+Skills
+Level
+Combat
+
+
+
+
+
+Skills:
+--------
+Name		Dmg	miss	warmup
+--------------------------------------
+Kick		2.0	20	0
+Slap		1.0	 5	0
+Punch		1.5	10	0
+Bite		3.0	 5	2
+Uppercut	5.0	20	4
+Scratch		0.5	 0	0
+Fart		2.5	20	1
+
+
+
+
+Stats 	- Skill		- name
+			- damage
+			- misschance
+	- Level		  			
+	- Health	 
+Game
+Map
+Living	- Player
+	- NPC
+Combat
+
+
+
+
+
+
+damage : 1.5
+level: 1
+level 10
