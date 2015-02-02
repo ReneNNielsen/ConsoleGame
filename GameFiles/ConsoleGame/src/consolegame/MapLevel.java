@@ -8,6 +8,7 @@ package consolegame;
 import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -19,7 +20,7 @@ import java.util.Scanner;
 public class MapLevel {
     
     private String map;
-    private List<NPC> npcs;
+    private List<NPC> npcs = new ArrayList<NPC>();
     private Point playerStartPosition;
     
     public void loadMap(String fileName)
@@ -42,7 +43,7 @@ public class MapLevel {
             e.printStackTrace();
         }                
         map = theLevel;
-        mapNpcSearch();
+        mapObjectsSearch();
     }
       
     public String getMap()
@@ -59,30 +60,49 @@ public class MapLevel {
         return npcs;
     }        
     
-    private void mapNpcSearch()
+    private void mapObjectsSearch()
     {
         Scanner npcSearch = new Scanner(map);
-        int linecount = 0;
+        int x = 0;  // vandret
+        int y = 0;  // lodret
+        char[] mobs = {'1','2','3','4','5','6','7','8','9'};
+        char[] player = {'*'};
         
         while(npcSearch.hasNextLine())
-        {
+        {            
             String currentLine = npcSearch.nextLine();
+            //System.out.println(currentLine);
             if(currentLine.matches(".*\\d.*"))
             {
-                /*
-                for (int i = -1; (i = currentLine.indexOf(word, i + 1)) != -1; ) {
-                    System.out.println(i);
-                } */
-                
-                String numberHolder = currentLine.replaceAll("[^0-9]+", " ");
-                System.out.println(currentLine + linecount + " -> " + Arrays.asList(numberHolder.trim().split(",")));
+                for (int i = 0; i < currentLine.length(); i++) {
+                    char character = currentLine.charAt(i);
+                    if(isThereChar(mobs, character))
+                    {
+                        NPC monster = new NPC(character);
+                        monster.setPosition(new Point(x, y));
+                        npcs.add(monster);
+                        //System.out.println(" -> X: " + x + " Y: " + y);
+                    }
+                    else if(isThereChar(player, character))
+                    {
+                        playerStartPosition = new Point(x,y);
+                    }                    
+                    y++;
+                }
             }
-            else
-            {
-                //System.out.println("True");
-            }
-            linecount++;
+            x++;
         }
-    } 
+    }
+    
+    private boolean isThereChar(char[] chaArray, char chr){
+    boolean bool = false;
+    for(int i=0; i < chaArray.length; i++) {
+        if(chr==chaArray[i])
+        {
+             bool = true;
+        }
+    }
+    return bool;
+}
     
 }

@@ -13,9 +13,9 @@ public class NPC extends Actor {
     
     protected int xpGive;
     
-    public void NPC(int xpGive)
+    public NPC(int level)
     {
-        
+        // regn xp, health osv ud fra level int        
     }
 
     public int getXpGive() {
