@@ -22,16 +22,15 @@ public class MapLevel {
     
     public void loadMap(String fileName)
     {
-        String applicationDir = getClass().getProtectionDomain().getCodeSource().getLocation().getPath(); 
-        String fileToLoad = applicationDir + "/levels/" + fileName + ".txt";        
-        File file = new File(fileToLoad);       
+               
+        File file = new File(fileName);       
         String theLevel = "";
         try 
         {
             Scanner sc = new Scanner(file);
             
             while (sc.hasNextLine()) {
-                String line = sc.nextLine();
+                String line = sc.nextLine() + "\n";
                 theLevel += line;
             }
             sc.close();
