@@ -5,19 +5,17 @@
  */
 package consolegame;
 
-import java.awt.Point;
-
 /**
  *
- * @author Bruger
+ * @author reneNote
  */
-public class Player extends Actor {
-    
-    protected int xp;
-    
-    public void move(Point currPosition)
-    {
-               
+public class SkillBite extends Skill{
+
+    public SkillBite() {
+        name = "Bite";
+        damage = 3.0;
+        warmupRounds = 2;
+        missChance = 5;
     }
     
 }

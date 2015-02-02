@@ -10,5 +10,28 @@ package consolegame;
  * @author Bruger
  */
 public class Skill {
+    protected String name;
+    protected double damage;
+    protected int missChance;
+    protected int warmupRounds;
+
+    public Skill() {
+        
+    }
     
+    public String getName() {
+        return name;
+    }
+
+    public double getDamage() {
+        return damage;
+    }
+
+    public int getMissChance() {
+        return missChance;
+    }
+
+    public int getWarmupRounds() {
+        return warmupRounds;
+    }           
 }

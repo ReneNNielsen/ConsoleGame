@@ -5,19 +5,17 @@
  */
 package consolegame;
 
-import java.awt.Point;
-
 /**
  *
- * @author Bruger
+ * @author reneNote
  */
-public class Player extends Actor {
-    
-    protected int xp;
-    
-    public void move(Point currPosition)
-    {
-               
+public class SkillUppercut extends Skill{
+
+    public SkillUppercut() {
+        name = "Uppercut";
+        damage = 25.0;
+        warmupRounds = 4;
+        missChance = 20;
     }
     
 }
