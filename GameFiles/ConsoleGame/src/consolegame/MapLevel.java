@@ -54,19 +54,32 @@ public class MapLevel {
     {
         return new Point(0,0);
     }
+
+    public List<NPC> getNpcs() {
+        return npcs;
+    }        
     
     private void mapNpcSearch()
     {
         Scanner npcSearch = new Scanner(map);
         int linecount = 0;
+        
         while(npcSearch.hasNextLine())
         {
-            if(npcSearch.nextLine().matches(".*\\d.*"))
+            String currentLine = npcSearch.nextLine();
+            if(currentLine.matches(".*\\d.*"))
             {
-                String numberHolder = npcSearch.nextLine().replaceAll("[^0-9]+", " ");
-                System.out.println(Arrays.asList(numberHolder.trim().split(" ")));
+                /*
+                for (int i = -1; (i = currentLine.indexOf(word, i + 1)) != -1; ) {
+                    System.out.println(i);
+                } */
                 
-                
+                String numberHolder = currentLine.replaceAll("[^0-9]+", " ");
+                System.out.println(currentLine + linecount + " -> " + Arrays.asList(numberHolder.trim().split(",")));
+            }
+            else
+            {
+                //System.out.println("True");
             }
             linecount++;
         }
