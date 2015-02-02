@@ -9,9 +9,9 @@ package consolegame;
  *
  * @author Bruger
  */
-public class NPC {
+public class NPC extends Actor {
     
-    private int xpGive;
+    protected int xpGive;
     
     public void NPC(int xpGive)
     {
@@ -20,6 +20,6 @@ public class NPC {
 
     public int getXpGive() {
         return xpGive;
-    }       
+    }              
     
 }

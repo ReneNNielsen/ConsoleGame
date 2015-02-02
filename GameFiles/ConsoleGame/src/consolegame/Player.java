@@ -11,13 +11,13 @@ import java.awt.Point;
  *
  * @author Bruger
  */
-public class Player {
+public class Player extends Actor {
     
-    private int xp;
+    protected int xp;
     
     public void move(Point currPosition)
     {
-                
+               
     }
     
 }

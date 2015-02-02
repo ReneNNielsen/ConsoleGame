@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class Actor {
     
-    private String name;
-    private int health;
-    private int level;
-    private List<Skill> skills;
-    private Point position;
+    protected String name;
+    protected int health;
+    protected int level;
+    protected List<Skill> skills;
+    protected Point position;
   
 }
