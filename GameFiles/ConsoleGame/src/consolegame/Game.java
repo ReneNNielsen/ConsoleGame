@@ -5,18 +5,22 @@
  */
 package consolegame;
 
+import java.util.List;
+
 /**
  *
  * @author Bruger
  */
 public class Game {
 
+    private List<MapLevel> mapList;
+    private Player player;
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.println("Ja hallo!");
+        
     }
     
 }

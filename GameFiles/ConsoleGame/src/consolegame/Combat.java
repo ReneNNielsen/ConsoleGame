@@ -11,4 +11,26 @@ package consolegame;
  */
 public class Combat {
     
+    private Player player;
+    private NPC npc;
+    
+    public void Combat(Player player, NPC npc)
+    {
+        
+    }
+    
+    public boolean doCombat()
+    {
+        return true;
+    }
+    
+    private void doNpcTurn()
+    {
+        
+    }
+
+    private void doPlayerTurn()
+    {
+        
+    }
 }
