@@ -8,6 +8,7 @@ package consolegame;
 import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,8 +18,9 @@ import java.util.Scanner;
  */
 public class MapLevel {
     
-    protected String map;
-    protected List<NPC> npcs;
+    private String map;
+    private List<NPC> npcs;
+    private Point playerStartPosition;
     
     public void loadMap(String fileName)
     {
@@ -40,8 +42,9 @@ public class MapLevel {
             e.printStackTrace();
         }                
         map = theLevel;
+        mapNpcSearch();
     }
-    
+      
     public String getMap()
     {
         return map;
@@ -51,5 +54,22 @@ public class MapLevel {
     {
         return new Point(0,0);
     }
+    
+    private void mapNpcSearch()
+    {
+        Scanner npcSearch = new Scanner(map);
+        int linecount = 0;
+        while(npcSearch.hasNextLine())
+        {
+            if(npcSearch.nextLine().matches(".*\\d.*"))
+            {
+                String numberHolder = npcSearch.nextLine().replaceAll("[^0-9]+", " ");
+                System.out.println(Arrays.asList(numberHolder.trim().split(" ")));
+                
+                
+            }
+            linecount++;
+        }
+    } 
     
 }

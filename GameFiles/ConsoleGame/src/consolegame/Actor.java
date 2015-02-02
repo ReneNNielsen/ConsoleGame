@@ -19,5 +19,45 @@ public class Actor {
     protected int level;
     protected List<Skill> skills;
     protected Point position;
-  
+
+    public Point getPosition() {
+        return position;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPosition(Point position) {
+        this.position = position;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }      
+    
 }
