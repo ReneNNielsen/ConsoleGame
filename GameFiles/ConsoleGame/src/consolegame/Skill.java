@@ -5,6 +5,8 @@
  */
 package consolegame;
 
+import java.util.Random;
+
 /**
  *
  * @author Bruger
@@ -33,5 +35,37 @@ public class Skill {
 
     public int getWarmupRounds() {
         return warmupRounds;
-    }           
+    }  
+    
+    public Skill getRandomSkill() {   
+        int randomNumber = new Random().nextInt(7);
+        Skill randomSkill;
+        switch (randomNumber) {
+            case 1:
+                randomSkill = new SkillBite();
+            break;
+            case 2:
+                randomSkill = new SkillFart();
+            break;
+            case 3:
+                randomSkill = new SkillKick();
+            break;
+            case 4:
+                randomSkill = new SkillPunch();               
+            break;                
+            case 5:
+                randomSkill = new SkillScratch();
+            break;                
+            case 6:
+                randomSkill = new SkillSlap();
+            break;
+            case 7:
+                randomSkill = new SkillUppercut();
+            break;
+            default:
+                randomSkill = new SkillPunch();
+            break;   
+        }
+        return randomSkill;
+    }
 }
