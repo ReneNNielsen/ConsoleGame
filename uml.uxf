@@ -13,6 +13,7 @@
 --
 -map: String
 -npcs: List&lt;NPC&gt;
+-playerStartPosition: Point
 --
 +loadMap(String fileName)
 +getMap
@@ -29,10 +30,10 @@
     </coordinates>
     <panel_attributes>/skill/
 --
-/-name: String/
-/-damage: double/
-/-missChance: int/
-/-warmupRounds: int/
+/#name: String/
+/#damage: double/
+/#missChance: int/
+/#warmupRounds: int/
 --
 +getName(): String
 +getDamage(): double
@@ -258,11 +259,11 @@ player: Player
     </coordinates>
     <panel_attributes>Actor
 --
--name: String
--health: int
--level: int
--skills: List&lt;Skill&gt;
--position: Point
+#name: String
+#health: int
+#level: int
+#skills: List&lt;Skill&gt;
+#position: Point
 --</panel_attributes>
     <additional_attributes/>
   </element>

@@ -6,6 +6,8 @@
 package consolegame;
 
 import java.io.File;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +16,7 @@ import java.util.List;
  */
 public class Game {
 
-    private List<MapLevel> mapList;
+    private List<MapLevel> mapList = new ArrayList<MapLevel>();
     private Player player;
     
     /**
@@ -23,6 +25,7 @@ public class Game {
     public static void main(String[] args) {
         Game game = new Game();
         game.addMaps();
+        clearConsole();
     }
     
     private void addMaps()
@@ -37,7 +40,31 @@ public class Game {
             System.out.println(map.getMap());
             mapList.add(map);
         }
-        
         System.out.println("Done");
     }
+    private static void clearConsole()
+    {
+        try
+        {
+            String os = System.getProperty("os.name");
+
+            if (os.contains("Windows"))
+            {
+                Runtime.getRuntime().exec("cls");
+            }
+            else
+            {
+                Runtime.getRuntime().exec("clear");
+            }
+        }
+        catch (final Exception e)
+        {
+            for (int i = 0; i < 15; i++) {
+                System.out.println("");
+            }
+        }
+        
+    }
+    
+    
 }
