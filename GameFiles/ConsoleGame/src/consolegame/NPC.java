@@ -11,4 +11,15 @@ package consolegame;
  */
 public class NPC {
     
+    private int xpGive;
+    
+    public void NPC(int xpGive)
+    {
+        
+    }
+
+    public int getXpGive() {
+        return xpGive;
+    }       
+    
 }

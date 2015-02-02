@@ -5,10 +5,19 @@
  */
 package consolegame;
 
+import java.awt.Point;
+
 /**
  *
  * @author Bruger
  */
 public class Player {
+    
+    private int xp;
+    
+    public void move(Point currPosition)
+    {
+                
+    }
     
 }
