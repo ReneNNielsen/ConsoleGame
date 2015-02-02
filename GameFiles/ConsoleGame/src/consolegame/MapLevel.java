@@ -53,7 +53,7 @@ public class MapLevel {
     
     public Point getStartPosition()
     {
-        return new Point(0,0);
+        return playerStartPosition;
     }
 
     public List<NPC> getNpcs() {
