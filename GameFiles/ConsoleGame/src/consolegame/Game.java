@@ -5,10 +5,14 @@
  */
 package consolegame;
 
+import java.awt.Point;
+import java.io.BufferedReader;
 import java.io.File;
-import java.util.AbstractList;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -18,7 +22,8 @@ public class Game {
 
     private List<MapLevel> mapList = new ArrayList<MapLevel>();
     private Player player;
-    
+    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private int mapNumber;
     /**
      * @param args the command line arguments
      */
@@ -26,6 +31,7 @@ public class Game {
         Game game = new Game();
         game.addMaps();
         clearConsole();
+        game.doGame();
     }
     
     private void addMaps()
@@ -66,5 +72,90 @@ public class Game {
         
     }
     
+    private void doGame()
+    {
+        try {
+            initGame();
+            writeMap();
+            while (true) {
+                clearConsole();
+                Point point = player.getPosition();
+                int x = point.x;
+                int y = point.y;
+                int next = br.read();
+                System.out.println(next);
+//                if (!writeMap()) {
+//                    
+//                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    private void initGame() throws IOException
+    {
+        System.out.println("Enter Name:");
+        String name = br.readLine();
+        
+        player = new Player();
+        player.name = name;
+        player.level = 0;
+        player.health = 100;
+        player.xp = 0;
+        player.position = mapList.get(0).getStartPosition();
+        player.skills.add(new SkillSlap());
+        mapNumber = 0;
+    }
+    
+    private boolean writeMap()
+    {
+        MapLevel map = mapList.get(mapNumber);
+        
+        for (NPC npc : map.getNpcs()) {
+            if (npc.position == player.position) {
+                Combat combat = new Combat(player, npc);
+                boolean didWin = combat.doCombat();
+                if (didWin) {
+                    player.xp += npc.xpGive;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+         
+        Scanner mapContainer = new Scanner(map.getMap());
+        int y = 0;
+        
+        while(mapContainer.hasNextLine())
+        {
+            String currentLine = mapContainer.nextLine();
+            if (player.getPosition().y == y) 
+            {
+                if (currentLine.substring(player.getPosition().x,1) == "#")
+                {
+                    return false;
+                }
+                else if (currentLine.substring(player.getPosition().x,1) == "$")
+                {
+                    System.out.println("NOT MADE YET");
+                    System.out.println("NOT MADE YET");
+                    System.out.println("NOT MADE YET");
+                }
+                System.out.print(currentLine.substring(0, player.getPosition().x));
+                System.out.print("*");
+                System.out.println(currentLine.substring(player.getPosition().x + 1));
+            }
+            
+            else
+            {
+                System.out.println(currentLine);
+            }
+            y++;
+        }
+        return true;
+    }
     
 }

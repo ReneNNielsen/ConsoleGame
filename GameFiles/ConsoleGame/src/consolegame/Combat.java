@@ -14,9 +14,10 @@ public class Combat {
     private Player player;
     private NPC npc;
     
-    public void Combat(Player player, NPC npc)
+    public Combat(Player player, NPC npc)
     {
-        
+        this.player = player;
+        this.npc = npc;
     }
     
     public boolean doCombat()

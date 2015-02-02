@@ -6,6 +6,7 @@
 package consolegame;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class Actor {
     protected String name;
     protected int health;
     protected int level;
-    protected List<Skill> skills;
+    protected List<Skill> skills = new ArrayList<>();
     protected Point position;
 
     public Point getPosition() {
