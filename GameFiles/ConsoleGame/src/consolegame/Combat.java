@@ -22,7 +22,9 @@ public class Combat {
     
     public boolean doCombat()
     {
-        return true;
+        Game.clearConsole();
+        
+        return false;
     }
     
     private void doNpcTurn()

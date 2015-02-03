@@ -36,7 +36,11 @@ public class Game {
     
     private void addMaps()
     {
-        String applicationDir = getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace("%20", " ") + "levels/";
+        String applicationDir = getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace("%20", " ");
+        if (applicationDir.contains(".")) {
+            applicationDir = applicationDir.substring(applicationDir.lastIndexOf('/'));
+        }
+        applicationDir += "levels/";
         File folder = new File(applicationDir);
         System.out.println("Path: " + applicationDir);
         for (File fileEntry : folder.listFiles()) {
