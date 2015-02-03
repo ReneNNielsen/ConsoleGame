@@ -19,7 +19,7 @@ public class Combat {
     private int playerHealthRemaining = 0;
     private NPC npc;
     private int npcHealthRemaining = 0;
-    
+    private String combatLog = "";
     public Combat(Player player, NPC npc)
     {
         this.player = player;
@@ -68,6 +68,7 @@ public class Combat {
     }
     private void showStatsAndSkills(boolean isPlayerTurn)
     {
+        System.out.println(combatLog);
         System.out.println("--------------------------------------------");
         System.out.println(player.getName() + "\t\t\t" + npc.getName());
         System.out.println("Level: " + player.getLevel() + " xp: " + player.getXp() + "\t\tLevel: " + npc.getLevel());
@@ -92,12 +93,14 @@ public class Combat {
         int randomNumber = new Random().nextInt(npc.skills.size());
         if (didAtackMiss(randomNumber)) 
         {
+            combatLog += npc.name + " did miss with " + npc.skills.get(randomNumber).name + " when trying to damage " + player.name + "\n";
             System.out.println(npc.name + " did miss with " + npc.skills.get(randomNumber).name + " when trying to damage " + player.name);
         }
         else
         {
-            int damageDone = (int)Math.round(player.getSkillDamage(randomNumber));
+            int damageDone = (int)Math.round(npc.getSkillDamage(randomNumber));
             playerHealthRemaining -= damageDone;
+            combatLog +=npc.name + " did " + damageDone + " damage with " + npc.skills.get(randomNumber).name + " to " + player.name + "\n";
             System.out.println(npc.name + " did " + damageDone + " damage with " + npc.skills.get(randomNumber).name + " to " + player.name);
         }
     
@@ -112,12 +115,14 @@ public class Combat {
             if (skillNumber < 4) {
                 if (didAtackMiss(skillNumber)) 
                 {
+                    combatLog += player.name + " did miss with " + player.skills.get(skillNumber).name + " when trying to damage " + npc.name + "\n";
                     System.out.println(player.name + " did miss with " + player.skills.get(skillNumber).name + " when trying to damage " + npc.name);
                 }
                 else
                 {
                     int damageDone = (int)Math.round(player.getSkillDamage(skillNumber));
                     npcHealthRemaining -= damageDone;
+                    combatLog += player.name + " did " + damageDone + " damage with " + player.skills.get(skillNumber).name + " to " + npc.name + "\n";
                     System.out.println(player.name + " did " + damageDone + " damage with " + player.skills.get(skillNumber).name + " to " + npc.name);
                 }
             }
