@@ -57,7 +57,7 @@ public class Player extends Actor {
         {
             xpToNextLvl = xpToNextLvl * 2;
         }
-        if(xpToNextLvl < xp)
+        if(xpToNextLvl <= xp)
         {
             raiseStatsOneLvl();
         }        
