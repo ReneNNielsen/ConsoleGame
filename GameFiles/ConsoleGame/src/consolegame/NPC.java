@@ -18,11 +18,13 @@ public class NPC extends Actor {
     protected int xpGive;
     private double multiplier = 2.0;
     private String[] names = { "Jens" , "Erik" , "Binger" , "Ping" , "Pong" , "Lee" };
-    //List<Skill> skillsArray = new ArrayList<Skill>( SkillBite, SkillFart );
     
+    /**
+     * NPC constructor that gives it its health, xpGive and skills based on what level it is provided.
+     * @param level 
+     */
     public NPC(int level)
     {
-        // regn xp, health osv ud fra level int
         // Random name
         int idx = new Random().nextInt(names.length);
         name = (names[idx]);   
@@ -55,6 +57,10 @@ public class NPC extends Actor {
         xpGive = (int) (10 * multiplier);        
     }
 
+    /**
+     * Gets the xp value the NPC is dropping upon getting killed.
+     * @return xpGive
+     */
     public int getXpGive() {
         return xpGive;
     }              

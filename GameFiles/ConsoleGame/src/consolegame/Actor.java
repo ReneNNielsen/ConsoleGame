@@ -21,6 +21,8 @@ public class Actor {
     protected List<Skill> skills = new ArrayList<>();
     protected Point position;
 
+    // Gets
+    
     public Point getPosition() {
         return position;
     }
@@ -40,6 +42,8 @@ public class Actor {
     public List<Skill> getSkills() {
         return skills;
     }
+    
+    // Sets
 
     public void setHealth(int health) {
         this.health = health;

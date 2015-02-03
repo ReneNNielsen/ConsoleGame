@@ -23,6 +23,11 @@ public class MapLevel {
     private List<NPC> npcs = new ArrayList<NPC>();
     private Point playerStartPosition;
     
+    /**
+     * Loads the map from filename inside this class' map variable. It also creates a list of NPCs and their position 
+     * in the npcs variable.
+     * @param fileName 
+     */
     public void loadMap(String fileName)
     {
                
@@ -46,20 +51,39 @@ public class MapLevel {
         mapObjectsSearch();
     }
       
+    /**
+     * Gets the map and returns it as a string
+     * @return String
+     */
     public String getMap()
     {
         return map;
     }
     
+    /**
+     * Gets and returns the players start position in the map as Point(x,y).
+     * @return Point
+     */
     public Point getStartPosition()
     {
         return playerStartPosition;
     }
 
+    /**
+     * Gets and returns the npc List from the map.
+     * @return List
+     */
     public List<NPC> getNpcs() {
         return npcs;
     }        
     
+    // ------------
+    // - Privates -
+    // ------------
+    
+    /**
+     * Private method that searches the map for different object types like npcs and players startposition
+     */
     private void mapObjectsSearch()
     {
         Scanner npcSearch = new Scanner(map);
@@ -92,8 +116,25 @@ public class MapLevel {
             }
             x++;
         }
+        removeObjectsFromMap();
     }
     
+    /**
+     * 
+     * @param x
+     * @param y 
+     */
+    private void removeObjectsFromMap()
+    {        
+        map = map.replaceAll("[1-9*]", " ");
+    }
+    
+    /**
+     * Checks if the character in chr is inside the chaArray, and returns true if it is found.
+     * @param chaArray
+     * @param chr
+     * @return boolean
+     */
     private boolean isThereChar(char[] chaArray, char chr){
     boolean bool = false;
     for(int i=0; i < chaArray.length; i++) {
@@ -102,7 +143,7 @@ public class MapLevel {
              bool = true;
         }
     }
-    return bool;
+    return bool;        
 }
     
 }
