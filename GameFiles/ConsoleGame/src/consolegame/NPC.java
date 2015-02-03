@@ -23,9 +23,9 @@ public class NPC extends Actor {
      * NPC constructor that gives it its health, xpGive and skills based on what level it is provided.
      * @param level 
      */
-    public NPC(int level)
+    public NPC(int lvl)
     {
-        double multiplier = calculation * level;
+        double multiplier = calculation * lvl;
         
         // Random name
         int idx = new Random().nextInt(names.length);
@@ -33,6 +33,9 @@ public class NPC extends Actor {
         
         // Calculate health
         health = (int) (100 * (int)multiplier);
+        
+        //Level calc
+        level = lvl;
         
         // Skills
         int numberOfSkills = 0;
@@ -53,7 +56,7 @@ public class NPC extends Actor {
         {            
             Skill npcSkill = new Skill();
             skills.add(npcSkill.getRandomSkill());
-        }
+        }        
         
         //xpGive calculation
         xpGive = (int) (10 * (int)multiplier);        
