@@ -65,4 +65,11 @@ public class Actor {
         this.skills = skills;
     }      
     
+    public double getSkillDamage(int skill)
+    {
+        double baseDmg = skills.get(skill).damage;
+        double calculatedDmg = baseDmg * level;
+        return calculatedDmg;
+    }
+    
 }
