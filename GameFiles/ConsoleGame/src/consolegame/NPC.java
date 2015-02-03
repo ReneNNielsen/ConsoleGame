@@ -52,7 +52,7 @@ public class NPC extends Actor {
             numberOfSkills = 3;    
         }
         
-        for(int i = 1; i < numberOfSkills; i++)
+        for(int i = 0; i < numberOfSkills; i++)
         {            
             Skill npcSkill = new Skill();
             skills.add(npcSkill.getRandomSkill());
