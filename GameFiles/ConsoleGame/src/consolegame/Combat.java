@@ -23,8 +23,22 @@ public class Combat {
     public boolean doCombat()
     {
         Game.clearConsole();
-        
         return false;
+    }
+    private void showStatsAndSkills()
+    {
+        System.out.println(player.getName() + "\t\t" + npc.getName());
+        System.out.println("Level: " + player.getLevel() + " xp: " + player.getXp() + "\t\tLevel" + npc.getLevel());
+        System.out.println("--------------------------------------------");
+        
+        System.out.println("Skils:");
+        System.out.println("------");
+        int numberToPress = 1;
+        for (Skill skill : player.getSkills()) {
+            System.out.println(numberToPress + ": " + skill.getName());
+            numberToPress++;
+        }
+        
     }
     
     private void doNpcTurn()

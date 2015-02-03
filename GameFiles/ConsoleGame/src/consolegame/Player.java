@@ -19,5 +19,10 @@ public class Player extends Actor {
     {
                
     }
+
+    public int getXp() {
+        return xp;
+    }
+    
     
 }
