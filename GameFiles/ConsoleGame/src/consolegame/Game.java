@@ -130,7 +130,6 @@ public class Game {
         
         player = new Player();
         player.name = name;
-        player.level = 0;
         player.health = 100;
         player.xp = 0;
         player.position = mapList.get(0).getStartPosition();

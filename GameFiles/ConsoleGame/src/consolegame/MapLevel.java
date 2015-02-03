@@ -25,7 +25,7 @@ public class MapLevel {
     /**
      * Loads the map from filename inside this class' map variable. It also creates a list of NPCs and their position 
      * in the npcs variable.
-     * @param fileName 
+     * @param String 
      */
     public void loadMap(String fileName)
     {
