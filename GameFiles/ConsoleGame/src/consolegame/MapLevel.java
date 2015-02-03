@@ -92,8 +92,8 @@ public class MapLevel {
         char[] player = {'*'};
         
         while(npcSearch.hasNextLine())
-        {           
-            y = 0;
+        {          
+            x = 0;
             String currentLine = npcSearch.nextLine();
             //System.out.println(currentLine);
             if(currentLine.matches(".*\\d.*"))
@@ -111,10 +111,10 @@ public class MapLevel {
                     {
                         playerStartPosition = new Point(x,y);
                     }                    
-                    y++;
+                    x++;
                 }
             }
-            x++;
+            y++;
         }
         removeObjectsFromMap();
     }

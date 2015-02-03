@@ -23,6 +23,7 @@ public class Combat {
     public boolean doCombat()
     {
         Game.clearConsole();
+        showStatsAndSkills();
         return false;
     }
     private void showStatsAndSkills()
@@ -38,7 +39,10 @@ public class Combat {
             System.out.println(numberToPress + ": " + skill.getName());
             numberToPress++;
         }
-        
+        try {
+            Game.br.readLine();
+        } catch (Exception e) {
+        }
     }
     
     private void doNpcTurn()

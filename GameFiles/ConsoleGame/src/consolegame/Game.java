@@ -22,7 +22,7 @@ public class Game {
 
     private List<MapLevel> mapList = new ArrayList<MapLevel>();
     private Player player;
-    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private int mapNumber;
     /**
      * @param args the command line arguments
@@ -143,7 +143,7 @@ public class Game {
         MapLevel map = mapList.get(mapNumber);
         
         for (NPC npc : map.getNpcs()) {
-            if (npc.position == player.position) {
+            if (npc.position.x == player.position.x && npc.position.y == player.position.y) {
                 Combat combat = new Combat(player, npc);
                 boolean didWin = combat.doCombat();
                 if (didWin) {
