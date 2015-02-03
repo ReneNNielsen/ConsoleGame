@@ -9,7 +9,6 @@ import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -121,13 +120,15 @@ public class MapLevel {
     }
     
     /**
-     * 
+     * Private method that replaces the NPC in the map with M. The player is completely 
+     * removed but position is saved and used for drawing elsewhere.
      * @param x
      * @param y 
      */
     private void removeObjectsFromMap()
     {        
-        map = map.replaceAll("[1-9*]", " ");
+        map = map.replaceAll("[1-9]", "M");
+        map = map.replaceAll("[*]", " ");
     }
     
     /**

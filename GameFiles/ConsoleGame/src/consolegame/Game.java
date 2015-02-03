@@ -38,9 +38,9 @@ public class Game {
     {
         String applicationDir = getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace("%20", " ");
         if (applicationDir.contains(".")) {
-            applicationDir = applicationDir.substring(applicationDir.lastIndexOf('/'));
+            applicationDir = applicationDir.substring(0,applicationDir.lastIndexOf('/'));
         }
-        applicationDir += "levels/";
+        applicationDir += "/levels/";
         File folder = new File(applicationDir);
         System.out.println("Path: " + applicationDir);
         for (File fileEntry : folder.listFiles()) {
@@ -88,7 +88,7 @@ public class Game {
                 int y = point.y;
                 String next = br.readLine();
                 clearConsole();
-                System.out.println("Player: " + player.getName() + "  level: " + player.getLevel() + "  xp: " + player.xp);
+                
                 switch (next) {
                     case "a":
                         point.x--;
@@ -114,6 +114,7 @@ public class Game {
                     point.x = x;
                     point.y = y;
                     player.setPosition(point);
+                    clearConsole();
                     writeMap();
                 }
             }
@@ -157,7 +158,7 @@ public class Game {
          
         Scanner mapContainer = new Scanner(map.getMap());
         int y = 0;
-        
+        System.out.println("Player: " + player.getName() + "  level: " + player.getLevel() + "  xp: " + player.xp);
         while(mapContainer.hasNextLine())
         {
             String currentLine = mapContainer.nextLine();

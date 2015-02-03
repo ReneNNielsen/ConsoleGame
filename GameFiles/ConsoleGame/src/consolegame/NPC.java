@@ -16,7 +16,7 @@ import java.util.Random;
 public class NPC extends Actor {
     
     protected int xpGive;
-    private double multiplier = 2.0;
+    private double calculation = 1.5;
     private String[] names = { "Jens" , "Erik" , "Binger" , "Ping" , "Pong" , "Lee" };
     
     /**
@@ -25,12 +25,14 @@ public class NPC extends Actor {
      */
     public NPC(int level)
     {
+        double multiplier = calculation * level;
+        
         // Random name
         int idx = new Random().nextInt(names.length);
         name = (names[idx]);   
         
         // Calculate health
-        health = (int) (100 * multiplier);
+        health = (int) (100 * (int)multiplier);
         
         // Skills
         int numberOfSkills = 0;
@@ -54,7 +56,7 @@ public class NPC extends Actor {
         }
         
         //xpGive calculation
-        xpGive = (int) (10 * multiplier);        
+        xpGive = (int) (10 * (int)multiplier);        
     }
 
     /**
