@@ -77,6 +77,11 @@ public class Combat {
         
         if (isPlayerTurn) 
         {
+            try {
+                Game.br.reset();
+            } catch (Exception e) {
+            }
+            
             System.out.println("Skils:");
             System.out.println("------");
             int numberToPress = 1;
@@ -109,7 +114,6 @@ public class Combat {
     private void doPlayerTurn()
     {
         try {
-            Game.brClear();
             String readLine = Game.br.readLine();
             int skillNumber = Integer.parseInt(readLine) - 1;
             if (skillNumber < 4) {

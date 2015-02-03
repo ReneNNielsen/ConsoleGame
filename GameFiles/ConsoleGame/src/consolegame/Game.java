@@ -37,6 +37,7 @@ public class Game {
     public static void brClear()
     {
         br = new BufferedReader(new InputStreamReader(System.in));
+        
     }
     private void addMaps()
     {
