@@ -45,6 +45,10 @@ public class Actor {
     
     // Sets
 
+    public void setPosition(Point position) {
+        this.position = position;
+    }
+    
     public void setHealth(int health) {
         this.health = health;
     }
@@ -55,10 +59,6 @@ public class Actor {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setPosition(Point position) {
-        this.position = position;
     }
 
     public void setSkills(List<Skill> skills) {

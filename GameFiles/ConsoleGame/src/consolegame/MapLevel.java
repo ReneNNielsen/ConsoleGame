@@ -102,7 +102,8 @@ public class MapLevel {
                     char character = currentLine.charAt(i);
                     if(isThereChar(mobs, character))
                     {
-                        NPC monster = new NPC(character);
+                        NPC monster = new NPC((int)character);
+                        monster.setLevel((int)character);
                         monster.setPosition(new Point(x, y));
                         npcs.add(monster);
                         //System.out.println(" -> X: " + x + " Y: " + y);
