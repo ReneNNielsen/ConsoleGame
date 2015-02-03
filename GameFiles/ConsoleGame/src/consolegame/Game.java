@@ -48,7 +48,7 @@ public class Game {
         }
         System.out.println("Done");
     }
-    private static void clearConsole()
+    public static void clearConsole()
     {
         try
         {
@@ -74,19 +74,44 @@ public class Game {
     
     private void doGame()
     {
+        boolean runGame = true;
         try {
             initGame();
             writeMap();
-            while (true) {
-                clearConsole();
+            while (runGame) {
                 Point point = player.getPosition();
                 int x = point.x;
                 int y = point.y;
-                int next = br.read();
-                System.out.println(next);
-//                if (!writeMap()) {
-//                    
-//                }
+                String next = br.readLine();
+                clearConsole();
+                System.out.println("Player: " + player.getName() + "  level: " + player.getLevel() + "  xp: " + player.xp);
+                switch (next) {
+                    case "a":
+                        point.x--;
+                        player.setPosition(point);
+                        break;
+                    case "d":
+                        point.x++;
+                        player.setPosition(point);
+                        break;
+                    case "w":
+                        point.y--;
+                        player.setPosition(point);
+                        break;
+                    case "s":
+                        point.y++;
+                        player.setPosition(point);
+                        break;
+                    case "quit":
+                        runGame = false;
+                        continue;
+                }
+                if (!writeMap()) {
+                    point.x = x;
+                    point.y = y;
+                    player.setPosition(point);
+                    writeMap();
+                }
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -134,11 +159,12 @@ public class Game {
             String currentLine = mapContainer.nextLine();
             if (player.getPosition().y == y) 
             {
-                if (currentLine.substring(player.getPosition().x,1) == "#")
+                String test =currentLine.substring(player.getPosition().x,player.getPosition().x+1);
+                if (test.equals("#"))
                 {
                     return false;
                 }
-                else if (currentLine.substring(player.getPosition().x,1) == "$")
+                else if (currentLine.substring(player.getPosition().x,player.getPosition().x+1).equals("$"))
                 {
                     System.out.println("NOT MADE YET");
                     System.out.println("NOT MADE YET");
