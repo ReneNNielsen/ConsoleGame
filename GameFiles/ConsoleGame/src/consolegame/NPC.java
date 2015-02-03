@@ -32,7 +32,7 @@ public class NPC extends Actor {
         name = (names[idx]);   
         
         // Calculate health
-        health = (int) (100 * (int)multiplier);
+        health = (int) (40 * (int)multiplier);
         
         //Level calc
         level = lvl;
