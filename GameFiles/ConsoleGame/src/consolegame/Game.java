@@ -34,6 +34,10 @@ public class Game {
         game.doGame();
     }
     
+    public static void brClear()
+    {
+        br = new BufferedReader(new InputStreamReader(System.in));
+    }
     private void addMaps()
     {
         String applicationDir = getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace("%20", " ");

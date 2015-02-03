@@ -35,7 +35,7 @@ public class Combat {
         {            
             try 
             {
-                //Game.clearConsole();
+                Game.clearConsole();
                 showStatsAndSkills(isPlayerTurn);
                 if (isPlayerTurn)
                 {
@@ -45,14 +45,20 @@ public class Combat {
                 {
                     doNpcTurn();
                 }
-                Thread.sleep(1000);
+                Thread.sleep(1500);
                 isPlayerTurn = !isPlayerTurn;
                 if (npcHealthRemaining <= 0)
                 {
+                    Game.clearConsole();
+                    System.out.println("You did win!! :)");
+                    Thread.sleep(1500);
                     return true;
                 }
                 else if (playerHealthRemaining <= 0)
                 {
+                    Game.clearConsole();
+                    System.out.println("You did lose :(");
+                    Thread.sleep(1500);
                     return false;
                 }
             } catch (InterruptedException ex) {
@@ -90,8 +96,9 @@ public class Combat {
         }
         else
         {
-            playerHealthRemaining -= npc.skills.get(randomNumber).getDamage();
-            System.out.println(npc.name + " did " + npc.skills.get(randomNumber).getDamage() + " with " + npc.skills.get(randomNumber).name + " to " + player.name);
+            int damageDone = (int)Math.round(player.getSkillDamage(randomNumber));
+            playerHealthRemaining -= damageDone;
+            System.out.println(npc.name + " did " + damageDone + " damage with " + npc.skills.get(randomNumber).name + " to " + player.name);
         }
     
     }
@@ -99,6 +106,7 @@ public class Combat {
     private void doPlayerTurn()
     {
         try {
+            Game.brClear();
             String readLine = Game.br.readLine();
             int skillNumber = Integer.parseInt(readLine) - 1;
             if (skillNumber < 4) {
@@ -108,11 +116,9 @@ public class Combat {
                 }
                 else
                 {
-                    double test = player.skills.get(skillNumber).getDamage();
-                    test = Math.round(player.skills.get(skillNumber).getDamage());
-                    int damageDone = (int)Math.round(player.skills.get(skillNumber).getDamage());
+                    int damageDone = (int)Math.round(player.getSkillDamage(skillNumber));
                     npcHealthRemaining -= damageDone;
-                    System.out.println(player.name + " did " + damageDone + " with " + player.skills.get(skillNumber).name + " to " + npc.name);
+                    System.out.println(player.name + " did " + damageDone + " damage with " + player.skills.get(skillNumber).name + " to " + npc.name);
                 }
             }
             else
