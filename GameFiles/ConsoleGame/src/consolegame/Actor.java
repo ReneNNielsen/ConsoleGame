@@ -6,8 +6,10 @@
 package consolegame;
 
 import java.awt.Point;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -68,7 +70,10 @@ public class Actor {
     public double getSkillDamage(int skill)
     {
         double baseDmg = skills.get(skill).damage;
-        double calculatedDmg = baseDmg * level;
+        Random rand = new Random();
+        double diffBaseDmg = (baseDmg-0.5) + ((baseDmg+0.5) - (baseDmg-0.5)) * rand.nextDouble();
+        //double formattedDmg = new DecimalFormat("#.##").format(diffBaseDmg);
+        double calculatedDmg = diffBaseDmg * level;
         return calculatedDmg;
     }
     
