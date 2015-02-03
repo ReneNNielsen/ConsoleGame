@@ -12,24 +12,30 @@ package consolegame;
 public class Combat {
     
     private Player player;
+    private int playerHealthRemaining = 0;
     private NPC npc;
+    private int npcHealthRemaining = 0;
     
     public Combat(Player player, NPC npc)
     {
         this.player = player;
+        playerHealthRemaining = player.health;
         this.npc = npc;
+        npcHealthRemaining = npc.health;
+        
     }
     
     public boolean doCombat()
     {
         Game.clearConsole();
         showStatsAndSkills();
-        return false;
+        return true;
     }
     private void showStatsAndSkills()
     {
-        System.out.println(player.getName() + "\t\t" + npc.getName());
-        System.out.println("Level: " + player.getLevel() + " xp: " + player.getXp() + "\t\tLevel" + npc.getLevel());
+        System.out.println(player.getName() + "\t\t\t" + npc.getName());
+        System.out.println("Level: " + player.getLevel() + " xp: " + player.getXp() + "\t\tLevel: " + npc.getLevel());
+        System.out.println("Health: " + playerHealthRemaining + "/" + player.health + "\t\tHealth: " + npcHealthRemaining + "/" + npc.health);
         System.out.println("--------------------------------------------");
         
         System.out.println("Skils:");
@@ -38,10 +44,6 @@ public class Combat {
         for (Skill skill : player.getSkills()) {
             System.out.println(numberToPress + ": " + skill.getName());
             numberToPress++;
-        }
-        try {
-            Game.br.readLine();
-        } catch (Exception e) {
         }
     }
     
@@ -52,6 +54,14 @@ public class Combat {
 
     private void doPlayerTurn()
     {
-        
+        try {
+            String readLine = Game.br.readLine();
+            int skillNumber = Integer.parseInt(readLine);
+            if (skillNumber < 4) {
+                npcHealthRemaining -= player.skills.get(skillNumber).getDamage();
+                System.out.println(player.name + " did " + player.skills.get(skillNumber).getDamage() + " with " + player.skills.get(skillNumber).name + " to " + npc.name);
+            }
+        } catch (Exception e) {
+        }
     }
 }

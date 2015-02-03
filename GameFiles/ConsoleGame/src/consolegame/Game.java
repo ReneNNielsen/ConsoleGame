@@ -147,7 +147,7 @@ public class Game {
                 Combat combat = new Combat(player, npc);
                 boolean didWin = combat.doCombat();
                 if (didWin) {
-                    player.xp += npc.xpGive;
+                    player.addXp(npc.xpGive);
                 }
                 else
                 {
