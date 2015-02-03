@@ -93,7 +93,8 @@ public class MapLevel {
         char[] player = {'*'};
         
         while(npcSearch.hasNextLine())
-        {            
+        {           
+            y = 0;
             String currentLine = npcSearch.nextLine();
             //System.out.println(currentLine);
             if(currentLine.matches(".*\\d.*"))
