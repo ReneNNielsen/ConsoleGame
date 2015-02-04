@@ -13,8 +13,8 @@ import java.util.Random;
  *
  * @author Bruger
  */
-public class NPC extends Actor {
-    
+public class NPC extends Actor 
+{
     protected int xpGive;
     private double calculation = 1.5;
     private String[] names = { "Jens" , "Erik" , "Binger" , "Ping" , "Pong" , "Lee" };
@@ -65,8 +65,8 @@ public class NPC extends Actor {
      * Gets the xp value the NPC is dropping upon getting killed.
      * @return xpGive
      */
-    public int getXpGive() {
+    public int getXpGive() 
+    {
         return xpGive;
     }              
-    
 }

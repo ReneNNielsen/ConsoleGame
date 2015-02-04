@@ -13,13 +13,14 @@ import java.util.logging.Logger;
  *
  * @author Bruger
  */
-public class Combat {
-    
+public class Combat 
+{
     private Player player;
     private int playerHealthRemaining = 0;
     private NPC npc;
     private int npcHealthRemaining = 0;
     private String combatLog = "";
+    
     public Combat(Player player, NPC npc)
     {
         this.player = player;
@@ -66,6 +67,7 @@ public class Combat {
             }
         }
     }
+    
     private void showStatsAndSkills(boolean isPlayerTurn)
     {
         System.out.println(combatLog);
@@ -147,6 +149,7 @@ public class Combat {
                 doPlayerTurn();
         }
     }
+    
     private boolean didAtackMiss(int missChance)
     {
         int randomNumber = new Random().nextInt(100);

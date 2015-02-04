@@ -14,8 +14,8 @@ import java.util.Random;
  *
  * @author Bruger
  */
-public class Actor {
-    
+public class Actor 
+{   
     protected String name;
     protected int health;
     protected int level;
@@ -23,46 +23,54 @@ public class Actor {
     protected Point position;
 
     // Gets
-    
-    public Point getPosition() {
+    public Point getPosition() 
+    {
         return position;
     }
 
-    public int getHealth() {
+    public int getHealth() 
+    {
         return health;
     }
 
-    public int getLevel() {
+    public int getLevel() 
+    {
         return level;
     }
 
-    public String getName() {
+    public String getName() 
+    {
         return name;
     }
 
-    public List<Skill> getSkills() {
+    public List<Skill> getSkills() 
+    {
         return skills;
     }
     
     // Sets
-
-    public void setPosition(Point position) {
+    public void setPosition(Point position) 
+    {
         this.position = position;
     }
     
-    public void setHealth(int health) {
+    public void setHealth(int health) 
+    {
         this.health = health;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(int level) 
+    {
         this.level = level;
     }
 
-    public void setName(String name) {
+    public void setName(String name) 
+    {
         this.name = name;
     }
 
-    public void setSkills(List<Skill> skills) {
+    public void setSkills(List<Skill> skills) 
+    {
         this.skills = skills;
     }      
     
@@ -120,5 +128,4 @@ public class Actor {
         }
         return randomSkill;
     }
-    
 }

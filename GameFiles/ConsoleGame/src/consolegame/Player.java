@@ -9,8 +9,8 @@ package consolegame;
  *
  * @author Bruger
  */
-public class Player extends Actor {
-    
+public class Player extends Actor 
+{
     protected int xp;
     private int xpToNextLvl = 50; // Starts at 50 for the first level transition from lvl 1 to 2.
 
@@ -26,7 +26,8 @@ public class Player extends Actor {
      * Returns the players xp amount as an int
      * @return int
      */
-    public int getXp() {
+    public int getXp() 
+    {
         return xp;
     }
     
@@ -59,7 +60,8 @@ public class Player extends Actor {
      * Checks if the player is ready to proceed to the next level based on its xp amount. If the player is ready
      * its level is raised by one.
      */
-    private void checkIfNewLevel() {
+    private void checkIfNewLevel() 
+    {
         if(xpToNextLvl <= xp)
         {
             raiseStatsOneLvl();
@@ -93,6 +95,5 @@ public class Player extends Actor {
                 skills.add(getRandomSkill()); 
             break;
         }    
-    }
-    
+    } 
 }

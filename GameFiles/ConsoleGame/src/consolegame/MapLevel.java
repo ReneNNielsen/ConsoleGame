@@ -16,8 +16,8 @@ import java.util.Scanner;
  *
  * @author Bruger
  */
-public class MapLevel {
-    
+public class MapLevel 
+{
     private String map;
     private List<NPC> npcs = new ArrayList<NPC>();
     private Point playerStartPosition;
@@ -73,7 +73,8 @@ public class MapLevel {
      * Gets and returns the npc List from the map.
      * @return List
      */
-    public List<NPC> getNpcs() {
+    public List<NPC> getNpcs() 
+    {
         return npcs;
     }        
     
@@ -120,8 +121,7 @@ public class MapLevel {
         int x = 0;  // vandret
         int y = 0;  // lodret
         char[] mobs = {'1','2','3','4','5','6','7','8','9'};
-        char[] player = {'*'};
-        
+        char[] player = {'*'};    
         while(npcSearch.hasNextLine())
         {          
             x = 0;
@@ -168,15 +168,15 @@ public class MapLevel {
      * @param chr
      * @return boolean
      */
-    private boolean isThereChar(char[] chaArray, char chr){
-    boolean bool = false;
-    for(int i=0; i < chaArray.length; i++) {
-        if(chr==chaArray[i])
-        {
-             bool = true;
+    private boolean isThereChar(char[] chaArray, char chr)
+    {
+        boolean bool = false;
+        for(int i=0; i < chaArray.length; i++) {
+            if(chr==chaArray[i])
+            {
+                 bool = true;
+            }
         }
-    }
     return bool;        
-}
-    
+    }    
 }
