@@ -15,6 +15,6 @@ public class SkillKick extends Skill{
         name = "Kick";
         damage = 20.0;
         warmupRounds = 0;
-        missChance = 20;
+        missChance = 25;
     }
 }

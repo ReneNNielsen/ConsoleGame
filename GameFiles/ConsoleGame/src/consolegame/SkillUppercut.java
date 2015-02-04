@@ -15,7 +15,7 @@ public class SkillUppercut extends Skill{
         name = "Uppercut";
         damage = 25.0;
         warmupRounds = 4;
-        missChance = 20;
+        missChance = 30;
     }
     
 }
