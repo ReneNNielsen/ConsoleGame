@@ -9,13 +9,13 @@ package consolegame;
  *
  * @author reneNote
  */
-public class SkillBite extends Skill{
-
-    public SkillBite() {
+public class SkillBite extends Skill
+{
+    public SkillBite() 
+    {
         name = "Bite";
         damage = 30;
         warmupRounds = 2;
         missChance = 45;
     }
-    
 }

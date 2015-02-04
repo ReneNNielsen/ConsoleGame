@@ -11,29 +11,35 @@ import java.util.Random;
  *
  * @author Bruger
  */
-public class Skill {
+public class Skill 
+{
     protected String name;
     protected double damage;
     protected int missChance;
     protected int warmupRounds;
 
-    public Skill() {
+    public Skill() 
+    {
         
     }
     
-    public String getName() {
+    public String getName() 
+    {
         return name;
     }
 
-    public double getDamage() {
+    public double getDamage() 
+    {
         return damage;
     }
 
-    public int getMissChance() {
+    public int getMissChance() 
+    {
         return missChance;
     }
 
-    public int getWarmupRounds() {
+    public int getWarmupRounds() 
+    {
         return warmupRounds;
     }     
 }

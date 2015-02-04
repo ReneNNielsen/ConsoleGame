@@ -13,21 +13,27 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import sun.applet.Main;
 
 /**
  *
  * @author Bruger
  */
-public class Game {
-
+public class Game 
+{
     private List<MapLevel> mapList = new ArrayList<MapLevel>();
     private Player player;
     public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private int mapNumber;
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Game game = new Game();
         game.addMaps();
         clearConsole();
@@ -39,6 +45,7 @@ public class Game {
         br = new BufferedReader(new InputStreamReader(System.in));
         
     }
+    
     private void addMaps()
     {
         String applicationDir = getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace("%20", " ");
@@ -57,6 +64,7 @@ public class Game {
         }
         System.out.println("Done");
     }
+    
     public static void clearConsole()
     {
         try
@@ -74,7 +82,8 @@ public class Game {
         }
         catch (final Exception e)
         {
-            for (int i = 0; i < 15; i++) {
+            for (int i = 0; i < 15; i++) 
+            {
                 System.out.println("");
             }
         }
@@ -94,7 +103,8 @@ public class Game {
                 String next = br.readLine();
                 clearConsole();
                 
-                switch (next) {
+                switch (next) 
+                {
                     case "a":
                         point.x--;
                         player.setPosition(point);
@@ -115,7 +125,22 @@ public class Game {
                         runGame = false;
                         continue;
                 }
-                if (!writeMap()) {
+                if (!writeMap()) 
+                {
+                    if (mapNumber >= mapList.size()) 
+                    {
+                        playSound("I_am-the_one_and_only.mp3");
+                        runGame = false;
+                        clearConsole();
+                        System.out.println("   You won the Game!");
+                        System.out.println("------------------------");
+                        System.out.println("You are TOTALY AWESOME");
+                        System.out.println("no one can beat you!");
+                        System.out.println("------------------------");
+                        System.out.println("YOU ARE THE ONE AND ONLY!!");
+                        System.out.println("NOBODY CAN'T TAKE THAT AWAY FROM YOU!!!!!!");
+                        continue;
+                    }
                     point.x = x;
                     point.y = y;
                     player.setPosition(point);
@@ -123,7 +148,8 @@ public class Game {
                     writeMap();
                 }
             }
-        } catch (Exception e) {
+        } catch (Exception e) 
+        {
             System.out.println(e.getMessage());
         }
     }
@@ -138,12 +164,14 @@ public class Game {
         System.out.println("For quiting the game enter quit (not avaible in combat mode).");
         System.out.println("You need to press enter to aplay all commands");
         System.out.println("------------------------------");
+        
         System.out.println("To move around in the map use:");
         System.out.println("    'a' for left");
         System.out.println("    'd' for right");
         System.out.println("    'w' for up");
         System.out.println("    's' for down");
         System.out.println("------------------------------");
+        
         System.out.println("Combat mode:");
         System.out.println("To win you will have to kill the monster with your skills");
         System.out.println("Combat mode is turn based, you will hit first then the monster");
@@ -151,6 +179,7 @@ public class Game {
         System.out.println("Use your skills by clicking its number and press enter.");
         System.out.println("If you can see that you cant kill the monster you can run");
         System.out.println("by typing run and then hit enter");
+        
         System.out.println("------------------------------");
         System.out.println("---------Game started---------");
         System.out.println("------------------------------");
@@ -170,12 +199,13 @@ public class Game {
     private boolean writeMap()
     {
         MapLevel map = mapList.get(mapNumber);
-        
-        for (NPC npc : map.getNpcs()) {
+        for (NPC npc : map.getNpcs()) 
+        {
             if (npc.position.x == player.position.x && npc.position.y == player.position.y) {
                 Combat combat = new Combat(player, npc);
                 boolean didWin = combat.doCombat();
-                if (didWin) {
+                if (didWin) 
+                {
                     player.addXp(npc.xpGive);
                     map.killNpc(npc);
                     break;
@@ -186,7 +216,6 @@ public class Game {
                 }
             }
         }
-         
         Scanner mapContainer = new Scanner(map.getMap());
         int y = 0;
         System.out.println("Player: " + player.getName() + "  level: " + player.getLevel() + "  xp: " + player.getXp() + "/"+ player.getXpToNextLevel());
@@ -203,6 +232,9 @@ public class Game {
                 else if (currentLine.substring(player.getPosition().x,player.getPosition().x+1).equals("$"))
                 {
                     mapNumber++;
+                    if (mapNumber >= mapList.size()) {
+                        return false;
+                    }
                     player.setPosition(mapList.get(mapNumber).getStartPosition());
                     clearConsole();
                     writeMap();
@@ -211,7 +243,6 @@ public class Game {
                 System.out.print("*");
                 System.out.println(currentLine.substring(player.getPosition().x + 1));
             }
-            
             else
             {
                 System.out.println(currentLine);
@@ -221,4 +252,32 @@ public class Game {
         return true;
     }
     
+    public static synchronized void playSound(final String url) 
+    {
+        new Thread(new Runnable() 
+        {
+        // The wrapper thread is unnecessary, unless it blocks on the
+        // Clip finishing; see comments.
+            public void run() 
+            {
+                try 
+                {
+                  Clip clip = AudioSystem.getClip();
+                  String applicationDir = getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace("%20", " ");
+                  if (applicationDir.contains(".")) 
+                  {
+                      applicationDir = applicationDir.substring(0,applicationDir.lastIndexOf('/'));
+                  }
+                  AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                    Main.class.getResourceAsStream(applicationDir + url));
+                  clip.open(inputStream);
+                  clip.start(); 
+                } 
+                catch (Exception e) 
+                {
+                  System.err.println(e.getMessage());
+                }
+            }
+        }).start();
+    }
 }

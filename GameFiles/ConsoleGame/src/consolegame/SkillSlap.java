@@ -9,9 +9,11 @@ package consolegame;
  *
  * @author reneNote
  */
-public class SkillSlap extends Skill{
+public class SkillSlap extends Skill
+{
 
-    public SkillSlap() {
+    public SkillSlap() 
+    {
         name = "Slap";
         damage = 10.0;
         warmupRounds = 0;

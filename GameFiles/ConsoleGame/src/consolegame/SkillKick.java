@@ -9,9 +9,10 @@ package consolegame;
  *
  * @author reneNote
  */
-public class SkillKick extends Skill{
-
-    public SkillKick() {
+public class SkillKick extends Skill
+{
+    public SkillKick() 
+    {
         name = "Kick";
         damage = 20.0;
         warmupRounds = 0;

@@ -9,13 +9,13 @@ package consolegame;
  *
  * @author reneNote
  */
-public class SkillFart extends Skill{
-
-    public SkillFart() {
+public class SkillFart extends Skill
+{
+    public SkillFart() 
+    {
         name = "Fart";
         damage = 25.0;
         warmupRounds = 1;
         missChance = 30;
     }
-    
 }

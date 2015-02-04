@@ -9,13 +9,13 @@ package consolegame;
  *
  * @author reneNote
  */
-public class SkillUppercut extends Skill{
-
-    public SkillUppercut() {
+public class SkillUppercut extends Skill
+{
+    public SkillUppercut() 
+    {
         name = "Uppercut";
         damage = 25.0;
         warmupRounds = 4;
         missChance = 30;
     }
-    
 }

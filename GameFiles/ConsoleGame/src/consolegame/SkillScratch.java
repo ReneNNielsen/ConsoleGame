@@ -9,13 +9,13 @@ package consolegame;
  *
  * @author reneNote
  */
-public class SkillScratch extends Skill{
-
-    public SkillScratch() {
+public class SkillScratch extends Skill
+{
+    public SkillScratch() 
+    {
         name = "Scratch";
         damage = 25.0;
         warmupRounds = 0;
         missChance = 0;
     }
-    
 }
