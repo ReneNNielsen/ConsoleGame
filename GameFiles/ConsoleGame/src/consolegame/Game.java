@@ -277,21 +277,14 @@ public class Game
         return true;
     }
     
-    public static synchronized void playSound(final String url) 
-    {
-        try 
-        {
-          Clip clip = AudioSystem.getClip();
-          
-          AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream(applicationDir + url));
-          clip.open(inputStream);
-          clip.start(); 
-        } 
-        catch (Exception e) 
-        {
-          System.err.println(e.getMessage());
-        }
-    }
+    /**
+     * Take from http://stackoverflow.com/questions/577724/trouble-playing-wav-in-java/577926#577926
+     * @param clipFile
+     * @throws IOException
+     * @throws UnsupportedAudioFileException
+     * @throws LineUnavailableException
+     * @throws InterruptedException 
+     */
     private static void playClip(File clipFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException 
     {
         class AudioListener implements LineListener 
