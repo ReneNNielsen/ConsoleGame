@@ -46,6 +46,7 @@ public class MapLevel {
         {
             e.printStackTrace();
         }                
+        theLevel = theLevel.replaceAll("\t", "    ");
         map = theLevel;
         mapObjectsSearch();
     }
@@ -75,6 +76,31 @@ public class MapLevel {
     public List<NPC> getNpcs() {
         return npcs;
     }        
+    
+    
+    public void killNpc(Point position)
+    {
+        int lineNum = 0;
+        String theLevel = "";
+        try 
+        {
+            Scanner npcSearch = new Scanner(map);
+            while (npcSearch.hasNextLine()) {   
+                String currentLine = npcSearch.nextLine();
+                if(lineNum == position.y)
+                {
+                    currentLine = currentLine.substring(0, position.x) + " " + currentLine.substring(position.x + 1);
+                }
+                theLevel += currentLine + "\n";
+                lineNum++;
+            }
+            npcSearch.close();
+        } 
+        catch (Exception e) 
+        {
+            e.printStackTrace();
+        }               
+    }
     
     // ------------
     // - Privates -
