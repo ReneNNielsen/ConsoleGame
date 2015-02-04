@@ -50,14 +50,14 @@ public class Combat {
                 if (npcHealthRemaining <= 0)
                 {
                     Game.clearConsole();
-                    System.out.println("You did win!! :)");
+                    System.out.println("You won!! :)");
                     Thread.sleep(1500);
                     return true;
                 }
                 else if (playerHealthRemaining <= 0)
                 {
                     Game.clearConsole();
-                    System.out.println("You did lose :(");
+                    System.out.println("You lose :(");
                     Thread.sleep(1500);
                     return false;
                 }
