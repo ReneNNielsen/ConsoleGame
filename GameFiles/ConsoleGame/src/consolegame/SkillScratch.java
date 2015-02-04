@@ -13,7 +13,7 @@ public class SkillScratch extends Skill{
 
     public SkillScratch() {
         name = "Scratch";
-        damage = 2.5;
+        damage = 25.0;
         warmupRounds = 0;
         missChance = 0;
     }

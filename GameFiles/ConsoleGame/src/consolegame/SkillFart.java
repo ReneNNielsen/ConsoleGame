@@ -13,7 +13,7 @@ public class SkillFart extends Skill{
 
     public SkillFart() {
         name = "Fart";
-        damage = 2.5;
+        damage = 25.0;
         warmupRounds = 1;
         missChance = 20;
     }

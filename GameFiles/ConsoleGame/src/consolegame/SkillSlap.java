@@ -13,7 +13,7 @@ public class SkillSlap extends Skill{
 
     public SkillSlap() {
         name = "Slap";
-        damage = 1.0;
+        damage = 10.0;
         warmupRounds = 0;
         missChance = 5;
     }

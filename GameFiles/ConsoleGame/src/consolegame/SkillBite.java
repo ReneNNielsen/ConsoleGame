@@ -13,7 +13,7 @@ public class SkillBite extends Skill{
 
     public SkillBite() {
         name = "Bite";
-        damage = 3.0;
+        damage = 30;
         warmupRounds = 2;
         missChance = 5;
     }

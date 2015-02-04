@@ -13,7 +13,7 @@ public class SkillKick extends Skill{
 
     public SkillKick() {
         name = "Kick";
-        damage = 2.0;
+        damage = 20.0;
         warmupRounds = 0;
         missChance = 20;
     }

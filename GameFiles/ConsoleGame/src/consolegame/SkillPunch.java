@@ -13,7 +13,7 @@ public class SkillPunch extends Skill{
 
     public SkillPunch() {
         name = "Punch";
-        damage = 1.5;
+        damage = 15.0;
         warmupRounds = 0;
         missChance = 10;
     }
