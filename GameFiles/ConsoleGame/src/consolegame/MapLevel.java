@@ -77,7 +77,10 @@ public class MapLevel {
         return npcs;
     }        
     
-    
+    /**
+     * Removes a single NPC from the map. It is replaced by a whitespace.
+     * @param position 
+     */
     public void killNpc(Point position)
     {
         int lineNum = 0;
@@ -95,6 +98,7 @@ public class MapLevel {
                 lineNum++;
             }
             npcSearch.close();
+            map = theLevel;
         } 
         catch (Exception e) 
         {
