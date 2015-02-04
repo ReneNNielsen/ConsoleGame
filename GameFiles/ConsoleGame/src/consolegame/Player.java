@@ -60,10 +60,6 @@ public class Player extends Actor {
      * its level is raised by one.
      */
     private void checkIfNewLevel() {
-        for(int lvl = 1; lvl < level; lvl++)
-        {
-            xpToNextLvl = xpToNextLvl * 2;
-        }
         if(xpToNextLvl <= xp)
         {
             raiseStatsOneLvl();
@@ -75,10 +71,28 @@ public class Player extends Actor {
      */
     private void raiseStatsOneLvl()
     {
+        xpToNextLvl = 50;
+        for(int lvl = 1; lvl < level; lvl++)
+        {
+            xpToNextLvl = xpToNextLvl * 2;
+        }
+        
+        // Multiplier for increased stats raise
         double calculation = 1.5;
+        // Level raise
         level = level + 1;
         double multiplier = calculation * level;  
+        // HP raise
         health = (int) (40 * (int)multiplier);
+        // Add new skills if at appropriate level
+        switch(level)
+        {
+            case(3):
+            case(6):        
+            case(9):
+                skills.add(getRandomSkill()); 
+            break;
+        }    
     }
     
 }

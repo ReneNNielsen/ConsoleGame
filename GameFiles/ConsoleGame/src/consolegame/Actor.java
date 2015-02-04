@@ -73,9 +73,52 @@ public class Actor {
         double variationPercentage = (baseDmg / 100) * 5;        
         Random rand = new Random();
         double diffBaseDmg = (baseDmg-variationPercentage) + ((baseDmg+variationPercentage) - (baseDmg-variationPercentage)) * rand.nextDouble();
-        //double formattedDmg = new DecimalFormat("#.##").format(diffBaseDmg);
-        double calculatedDmg = diffBaseDmg * level;
-        return calculatedDmg;
+        double calculatedDmg;
+        if(level > 1)
+        {
+            return calculatedDmg = diffBaseDmg * (level / 1.5);
+        }
+        else
+        {
+            return calculatedDmg = diffBaseDmg;
+        }        
+    }
+
+    public Skill getRandomSkill() {   
+        int randomNumber = new Random().nextInt(7);
+        Skill randomSkill;
+        switch (randomNumber) {
+            case 1:
+                randomSkill = new SkillBite();
+            break;
+            case 2:
+                randomSkill = new SkillFart();
+            break;
+            case 3:
+                randomSkill = new SkillKick();
+            break;
+            case 4:
+                randomSkill = new SkillPunch();               
+            break;                
+            case 5:
+                randomSkill = new SkillScratch();
+            break;                
+            case 6:
+                randomSkill = new SkillSlap();
+            break;
+            case 7:
+                randomSkill = new SkillUppercut();
+            break;
+            default:
+                randomSkill = new SkillPunch();
+            break;   
+        }
+        for (Skill skill : skills) {
+            if (skill.name == randomSkill.name) {
+                randomSkill = getRandomSkill();
+            }
+        }
+        return randomSkill;
     }
     
 }

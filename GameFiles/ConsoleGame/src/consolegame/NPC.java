@@ -54,8 +54,7 @@ public class NPC extends Actor {
         
         for(int i = 0; i < numberOfSkills; i++)
         {            
-            Skill npcSkill = new Skill();
-            skills.add(npcSkill.getRandomSkill());
+            skills.add(getRandomSkill());
         }        
         
         //xpGive calculation
