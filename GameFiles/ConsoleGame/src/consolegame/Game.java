@@ -16,6 +16,11 @@ import java.util.Scanner;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineEvent;
+import javax.sound.sampled.LineEvent.Type;
+import javax.sound.sampled.LineListener;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import sun.applet.Main;
 
 /**
@@ -28,6 +33,7 @@ public class Game
     private Player player;
     public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private int mapNumber;
+    private static String applicationDir = "";
     
     /**
      * @param args the command line arguments
@@ -48,17 +54,19 @@ public class Game
     
     private void addMaps()
     {
-        String applicationDir = getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace("%20", " ");
+        applicationDir = getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace("%20", " ");
         if (applicationDir.contains(".")) {
             applicationDir = applicationDir.substring(0,applicationDir.lastIndexOf('/'));
         }
-        applicationDir += "/levels/";
-        File folder = new File(applicationDir);
-        System.out.println("Path: " + applicationDir);
+        
+        String levelsPath = applicationDir;
+        levelsPath += "/levels/";
+        File folder = new File(levelsPath);
+        System.out.println("Path: " + levelsPath);
         for (File fileEntry : folder.listFiles()) {
             System.out.println(fileEntry.getName());
             MapLevel map = new MapLevel();
-            map.loadMap(applicationDir + fileEntry.getName());
+            map.loadMap(levelsPath + fileEntry.getName());
             System.out.println(map.getMap());
             mapList.add(map);
         }
@@ -101,7 +109,6 @@ public class Game
                 int x = point.x;
                 int y = point.y;
                 String next = br.readLine();
-                clearConsole();
                 
                 switch (next) 
                 {
@@ -129,7 +136,6 @@ public class Game
                 {
                     if (mapNumber >= mapList.size()) 
                     {
-                        playSound("I_am-the_one_and_only.mp3");
                         runGame = false;
                         clearConsole();
                         System.out.println("   You won the Game!");
@@ -139,6 +145,14 @@ public class Game
                         System.out.println("------------------------");
                         System.out.println("YOU ARE THE ONE AND ONLY!!");
                         System.out.println("NOBODY CAN'T TAKE THAT AWAY FROM YOU!!!!!!");
+                        File file = new File(applicationDir + "I_am-the_one_and_only.wav");
+                        try 
+                        {
+                            playClip(file);
+                        } 
+                        catch (Exception e) 
+                        {
+                        }
                         continue;
                     }
                     point.x = x;
@@ -201,7 +215,17 @@ public class Game
         MapLevel map = mapList.get(mapNumber);
         for (NPC npc : map.getNpcs()) 
         {
-            if (npc.position.x == player.position.x && npc.position.y == player.position.y) {
+            if (npc.position.x == player.position.x && npc.position.y == player.position.y) 
+            {
+                File battleFile = new File(applicationDir + "Battle_Music.wav");
+                try 
+                {
+                    playClip(battleFile);
+                } 
+                catch (Exception e) 
+                {
+                }
+                clearConsole();
                 Combat combat = new Combat(player, npc);
                 boolean didWin = combat.doCombat();
                 if (didWin) 
@@ -216,6 +240,7 @@ public class Game
                 }
             }
         }
+        clearConsole();
         Scanner mapContainer = new Scanner(map.getMap());
         int y = 0;
         System.out.println("Player: " + player.getName() + "  level: " + player.getLevel() + "  xp: " + player.getXp() + "/"+ player.getXpToNextLevel());
@@ -254,30 +279,61 @@ public class Game
     
     public static synchronized void playSound(final String url) 
     {
-        new Thread(new Runnable() 
+        try 
         {
-        // The wrapper thread is unnecessary, unless it blocks on the
-        // Clip finishing; see comments.
-            public void run() 
+          Clip clip = AudioSystem.getClip();
+          
+          AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream(applicationDir + url));
+          clip.open(inputStream);
+          clip.start(); 
+        } 
+        catch (Exception e) 
+        {
+          System.err.println(e.getMessage());
+        }
+    }
+    private static void playClip(File clipFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException 
+    {
+        class AudioListener implements LineListener 
+        {
+            private boolean done = false;
+            @Override public synchronized void update(LineEvent event) 
             {
-                try 
+                Type eventType = event.getType();
+                if (eventType == Type.STOP || eventType == Type.CLOSE) 
                 {
-                  Clip clip = AudioSystem.getClip();
-                  String applicationDir = getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace("%20", " ");
-                  if (applicationDir.contains(".")) 
-                  {
-                      applicationDir = applicationDir.substring(0,applicationDir.lastIndexOf('/'));
-                  }
-                  AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                    Main.class.getResourceAsStream(applicationDir + url));
-                  clip.open(inputStream);
-                  clip.start(); 
-                } 
-                catch (Exception e) 
-                {
-                  System.err.println(e.getMessage());
+                  done = true;
+                  notifyAll();
                 }
             }
-        }).start();
+            public synchronized void waitUntilDone() throws InterruptedException 
+            {
+                while (!done) 
+                { 
+                    wait(); 
+                }
+            }
+        }
+        AudioListener listener = new AudioListener();
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(clipFile);
+        try 
+        {
+            Clip clip = AudioSystem.getClip();
+            clip.addLineListener(listener);
+            clip.open(audioInputStream);
+            try 
+            {
+              clip.start();
+              listener.waitUntilDone();
+            } finally 
+            {
+              clip.close();
+            }
+        } 
+        finally 
+        {
+          audioInputStream.close();
+        }
     }
+    
 }
