@@ -15,7 +15,7 @@ public class SkillSlap extends Skill
     {
         name = "Slap";
         damage = 10.0;
-        critChance = 10;
+        critChance = 20;
         missChance = 5;
     }    
 }
