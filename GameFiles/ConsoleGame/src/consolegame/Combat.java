@@ -125,22 +125,19 @@ public class Combat
             }
             int skillNumber = Integer.parseInt(readLine) - 1;
             if (skillNumber < 4) {
-                if (didAtackMiss(skillNumber)) 
+                if (didAtackMiss(player.skills.get(skillNumber).getMissChance())) 
                 {
                     combatLog += player.name + " did miss with " + player.skills.get(skillNumber).name + " when trying to damage " + npc.name + "\n";
                     System.out.println(player.name + " did miss with " + player.skills.get(skillNumber).name + " when trying to damage " + npc.name);
                 }
                 else
                 {
-                    int damageDone;
-                    if(wasAttackCritical(skillNumber))
+                    int damageDone = (int)Math.round(player.getSkillDamage(skillNumber));
+                    if(wasAttackCritical(player.skills.get(skillNumber).getCritChance()))
                     {
                         damageDone = (int)Math.round(player.getSkillDamage(skillNumber) * 2);           
-                        combatLog += "CRITICAL HIT!";
-                    }
-                    else
-                    {
-                        damageDone = (int)Math.round(player.getSkillDamage(skillNumber));
+                        combatLog += "CRITICAL HIT! ";
+                        System.out.print("CRITICAL HIT! ");
                     }
                     npcHealthRemaining -= damageDone;
                     combatLog += player.name + " did " + damageDone + " damage with " + player.skills.get(skillNumber).name + " to " + npc.name + "\n";
