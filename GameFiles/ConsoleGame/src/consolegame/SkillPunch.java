@@ -15,7 +15,7 @@ public class SkillPunch extends Skill
     {
         name = "Punch";
         damage = 15.0;
-        warmupRounds = 0;
+        critChance = 25;
         missChance = 15;
     }
 }

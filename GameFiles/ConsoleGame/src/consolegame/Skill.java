@@ -16,7 +16,7 @@ public class Skill
     protected String name;
     protected double damage;
     protected int missChance;
-    protected int warmupRounds;
+    protected int critChance;
 
     public Skill() 
     {
@@ -38,8 +38,8 @@ public class Skill
         return missChance;
     }
 
-    public int getWarmupRounds() 
+    public int getCritChance() 
     {
-        return warmupRounds;
+        return critChance;
     }     
 }

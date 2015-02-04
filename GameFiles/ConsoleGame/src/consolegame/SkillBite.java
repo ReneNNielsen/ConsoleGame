@@ -15,7 +15,8 @@ public class SkillBite extends Skill
     {
         name = "Bite";
         damage = 30;
-        warmupRounds = 2;
+        critChance = 10;
         missChance = 45;
+        
     }
 }

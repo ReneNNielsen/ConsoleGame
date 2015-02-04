@@ -15,7 +15,7 @@ public class SkillFart extends Skill
     {
         name = "Fart";
         damage = 25.0;
-        warmupRounds = 1;
+        critChance = 10;
         missChance = 30;
     }
 }

@@ -58,7 +58,7 @@ public class Combat
                 else if (playerHealthRemaining <= 0)
                 {
                     Game.clearConsole();
-                    System.out.println("You lose :(");
+                    System.out.println("You lost :(");
                     Thread.sleep(1500);
                     return false;
                 }
@@ -132,7 +132,16 @@ public class Combat
                 }
                 else
                 {
-                    int damageDone = (int)Math.round(player.getSkillDamage(skillNumber));
+                    int damageDone;
+                    if(wasAttackCritical(skillNumber))
+                    {
+                        damageDone = (int)Math.round(player.getSkillDamage(skillNumber) * 2);           
+                        combatLog += "CRITICAL HIT!";
+                    }
+                    else
+                    {
+                        damageDone = (int)Math.round(player.getSkillDamage(skillNumber));
+                    }
                     npcHealthRemaining -= damageDone;
                     combatLog += player.name + " did " + damageDone + " damage with " + player.skills.get(skillNumber).name + " to " + npc.name + "\n";
                     System.out.println(player.name + " did " + damageDone + " damage with " + player.skills.get(skillNumber).name + " to " + npc.name);
@@ -140,12 +149,12 @@ public class Combat
             }
             else
             {
-                System.out.println("you dont have an skill at that number, try another");
+                System.out.println("You dont have a skill at that number, try another");
                 doPlayerTurn();
             }
         } catch (Exception e) 
         {
-            System.out.println("thats not a number try another number");
+            System.out.println("That's not a number. Try another number");
                 doPlayerTurn();
         }
     }
@@ -158,5 +167,15 @@ public class Combat
             return true;
         }
         return false;
+    }
+    
+    private boolean wasAttackCritical(int critChance)
+    {
+        int randomNumber = new Random().nextInt(100);
+        if (randomNumber <= critChance) 
+        {
+            return true;
+        }
+        return false;       
     }
 }
