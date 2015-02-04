@@ -5,8 +5,6 @@
  */
 package consolegame;
 
-import java.awt.Point;
-
 /**
  *
  * @author Bruger
@@ -14,7 +12,7 @@ import java.awt.Point;
 public class Player extends Actor {
     
     protected int xp;
-    private double calculation = 1.5;
+    private int xpToNextLvl = 50; // Starts at 50 for the first level transition from lvl 1 to 2.
 
     /**
      * Constructor for the player class. Sets the level to 1.
@@ -38,9 +36,19 @@ public class Player extends Actor {
      * @param moreXp 
      */
     
-    public void addXp(int moreXp) {
+    public void addXp(int moreXp) 
+    {
         xp += moreXp;
         checkIfNewLevel();
+    }
+    
+    /**
+     * Gets the amount of xp required to raise to the players next level
+     * @return int
+     */
+    public int getXpToNextLevel() 
+    {
+        return xpToNextLvl;
     }
     
     // ------------
@@ -52,7 +60,6 @@ public class Player extends Actor {
      * its level is raised by one.
      */
     private void checkIfNewLevel() {
-        int xpToNextLvl = 50; // Starts at 50 for the first level transition from lvl 1 to 2.
         for(int lvl = 1; lvl < level; lvl++)
         {
             xpToNextLvl = xpToNextLvl * 2;
@@ -68,8 +75,9 @@ public class Player extends Actor {
      */
     private void raiseStatsOneLvl()
     {
-        double multiplier = calculation * level;
+        double calculation = 1.5;
         level = level + 1;
+        double multiplier = calculation * level;  
         health = (int) (40 * (int)multiplier);
     }
     
