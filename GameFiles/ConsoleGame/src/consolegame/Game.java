@@ -130,6 +130,31 @@ public class Game {
     
     private void initGame() throws IOException
     {
+        System.out.println("How to use The Game:");
+        System.out.println("You are the *(star) and the monsters is the M.");
+        System.out.println("You can gain xp/level by killing theis monsters.");
+        System.out.println("To go to  another map level you have to go into $");
+        System.out.println("and you will sporn in a new map.");
+        System.out.println("For quiting the game enter quit (not avaible in combat mode).");
+        System.out.println("You need to press enter to aplay all commands");
+        System.out.println("------------------------------");
+        System.out.println("To move around in the map use:");
+        System.out.println("    'a' for left");
+        System.out.println("    'd' for right");
+        System.out.println("    'w' for up");
+        System.out.println("    's' for down");
+        System.out.println("------------------------------");
+        System.out.println("Combat mode:");
+        System.out.println("To win you will have to kill the monster with your skills");
+        System.out.println("Combat mode is turn based, you will hit first then the monster");
+        System.out.println("hits you and that will go on intil one of you is dead.");
+        System.out.println("Use your skills by clicking its number and press enter.");
+        System.out.println("If you can see that you cant kill the monster you can run");
+        System.out.println("by typing run and then hit enter");
+        System.out.println("------------------------------");
+        System.out.println("---------Game started---------");
+        System.out.println("------------------------------");
+        
         System.out.println("Enter Name:");
         String name = br.readLine();
         
