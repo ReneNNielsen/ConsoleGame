@@ -72,6 +72,8 @@ public class Player extends Actor {
     private void raiseStatsOneLvl()
     {
         xpToNextLvl = 50;
+        // Level raise
+        level = level + 1;
         for(int lvl = 1; lvl < level; lvl++)
         {
             xpToNextLvl = xpToNextLvl * 2;
@@ -79,8 +81,6 @@ public class Player extends Actor {
         
         // Multiplier for increased stats raise
         double calculation = 1.5;
-        // Level raise
-        level = level + 1;
         double multiplier = calculation * level;  
         // HP raise
         health = (int) (40 * (int)multiplier);
