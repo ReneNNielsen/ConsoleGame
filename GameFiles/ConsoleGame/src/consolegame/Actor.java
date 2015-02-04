@@ -69,8 +69,10 @@ public class Actor {
     public double getSkillDamage(int skill)
     {
         double baseDmg = skills.get(skill).damage;
+        // Dmg can vary a fixed percentage from basedmg: 5%
+        double variationPercentage = (baseDmg / 100) * 5;        
         Random rand = new Random();
-        double diffBaseDmg = (baseDmg-0.5) + ((baseDmg+0.5) - (baseDmg-0.5)) * rand.nextDouble();
+        double diffBaseDmg = (baseDmg-variationPercentage) + ((baseDmg+variationPercentage) - (baseDmg-variationPercentage)) * rand.nextDouble();
         //double formattedDmg = new DecimalFormat("#.##").format(diffBaseDmg);
         double calculatedDmg = diffBaseDmg * level;
         return calculatedDmg;

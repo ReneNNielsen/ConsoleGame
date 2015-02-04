@@ -177,7 +177,8 @@ public class Game {
                 boolean didWin = combat.doCombat();
                 if (didWin) {
                     player.addXp(npc.xpGive);
-                    map.killNpc(npc.getPosition());
+                    map.killNpc(npc);
+                    break;
                 }
                 else
                 {

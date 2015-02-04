@@ -81,7 +81,7 @@ public class MapLevel {
      * Removes a single NPC from the map. It is replaced by a whitespace.
      * @param position 
      */
-    public void killNpc(Point position)
+    public void killNpc(NPC npc)
     {
         int lineNum = 0;
         String theLevel = "";
@@ -90,9 +90,9 @@ public class MapLevel {
             Scanner npcSearch = new Scanner(map);
             while (npcSearch.hasNextLine()) {   
                 String currentLine = npcSearch.nextLine();
-                if(lineNum == position.y)
+                if(lineNum == npc.getPosition().y)
                 {
-                    currentLine = currentLine.substring(0, position.x) + " " + currentLine.substring(position.x + 1);
+                    currentLine = currentLine.substring(0, npc.getPosition().x) + " " + currentLine.substring(npc.getPosition().x + 1);
                 }
                 theLevel += currentLine + "\n";
                 lineNum++;
@@ -103,7 +103,8 @@ public class MapLevel {
         catch (Exception e) 
         {
             e.printStackTrace();
-        }               
+        }
+        npcs.remove(npc);
     }
     
     // ------------
