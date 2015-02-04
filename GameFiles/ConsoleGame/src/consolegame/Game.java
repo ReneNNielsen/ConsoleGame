@@ -152,6 +152,7 @@ public class Game {
                 boolean didWin = combat.doCombat();
                 if (didWin) {
                     player.addXp(npc.xpGive);
+                    map.killNpc(npc.getPosition());
                 }
                 else
                 {
@@ -175,9 +176,10 @@ public class Game {
                 }
                 else if (currentLine.substring(player.getPosition().x,player.getPosition().x+1).equals("$"))
                 {
-                    System.out.println("NOT MADE YET");
-                    System.out.println("NOT MADE YET");
-                    System.out.println("NOT MADE YET");
+                    mapNumber++;
+                    player.setPosition(mapList.get(mapNumber).getStartPosition());
+                    clearConsole();
+                    writeMap();
                 }
                 System.out.print(currentLine.substring(0, player.getPosition().x));
                 System.out.print("*");

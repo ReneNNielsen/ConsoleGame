@@ -115,6 +115,12 @@ public class Combat {
     {
         try {
             String readLine = Game.br.readLine();
+            if (readLine.equals("run")) 
+            {
+                playerHealthRemaining = 0;
+                System.out.println("You are scared of " + npc.name + " and run away like a little girl");
+                return;
+            }
             int skillNumber = Integer.parseInt(readLine) - 1;
             if (skillNumber < 4) {
                 if (didAtackMiss(skillNumber)) 
