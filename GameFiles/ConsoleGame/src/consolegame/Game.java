@@ -249,20 +249,27 @@ public class Game
             String currentLine = mapContainer.nextLine();
             if (player.getPosition().y == y) 
             {
-                String test =currentLine.substring(player.getPosition().x,player.getPosition().x+1);
-                if (test.equals("#"))
-                {
-                    return false;
-                }
-                else if (currentLine.substring(player.getPosition().x,player.getPosition().x+1).equals("$"))
-                {
-                    mapNumber++;
-                    if (mapNumber >= mapList.size()) {
+                switch (currentLine.substring(player.getPosition().x,player.getPosition().x + 1)) {
+                    case "#":
                         return false;
-                    }
-                    player.setPosition(mapList.get(mapNumber).getStartPosition());
-                    clearConsole();
-                    writeMap();
+                    case "$":
+                        mapNumber++;
+                        if (mapNumber >= mapList.size()) {
+                            return false;
+                        }
+                        player.setPosition(mapList.get(mapNumber).getStartPosition());
+                        clearConsole();
+                        return writeMap();
+                    case "¤":
+                        mapNumber--;
+                        if (mapNumber < 0) 
+                        {
+                            mapNumber = 0;
+                            break;
+                        }
+                        player.setPosition(mapList.get(mapNumber).getStartPosition());
+                        clearConsole();
+                        return writeMap();
                 }
                 System.out.print(currentLine.substring(0, player.getPosition().x));
                 System.out.print("*");
