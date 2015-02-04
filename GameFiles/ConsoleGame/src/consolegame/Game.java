@@ -189,7 +189,7 @@ public class Game {
          
         Scanner mapContainer = new Scanner(map.getMap());
         int y = 0;
-        System.out.println("Player: " + player.getName() + "  level: " + player.getLevel() + "  xp: " + player.xp);
+        System.out.println("Player: " + player.getName() + "  level: " + player.getLevel() + "  xp: " + player.getXp() + "/"+ player.getXpToNextLevel());
         while(mapContainer.hasNextLine())
         {
             String currentLine = mapContainer.nextLine();
