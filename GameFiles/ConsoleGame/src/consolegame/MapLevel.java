@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package consolegame;
 
 import java.awt.Point;
@@ -14,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Bruger
+ * @author René & Daniel
  */
 public class MapLevel 
 {
@@ -25,7 +20,7 @@ public class MapLevel
     /**
      * Loads the map from filename inside this class' map variable. It also creates a list of NPCs and their position 
      * in the npcs variable.
-     * @param String 
+     * @param fileName: String
      */
     public void loadMap(String fileName)
     {
@@ -53,7 +48,7 @@ public class MapLevel
       
     /**
      * Gets the map and returns it as a string
-     * @return String
+     * @return String: map
      */
     public String getMap()
     {
@@ -62,7 +57,7 @@ public class MapLevel
     
     /**
      * Gets and returns the players start position in the map as Point(x,y).
-     * @return Point
+     * @return Point: playerStartPosition
      */
     public Point getStartPosition()
     {
@@ -71,7 +66,7 @@ public class MapLevel
 
     /**
      * Gets and returns the npc List from the map.
-     * @return List
+     * @return List<NPC>: npcs
      */
     public List<NPC> getNpcs() 
     {
@@ -80,7 +75,7 @@ public class MapLevel
     
     /**
      * Removes a single NPC from the map. It is replaced by a whitespace.
-     * @param position 
+     * @param npc: NPC 
      */
     public void killNpc(NPC npc)
     {
@@ -153,8 +148,6 @@ public class MapLevel
     /**
      * Private method that replaces the NPC in the map with M. The player is completely 
      * removed but position is saved and used for drawing elsewhere.
-     * @param x
-     * @param y 
      */
     private void removeObjectsFromMap()
     {        
@@ -164,15 +157,16 @@ public class MapLevel
     
     /**
      * Checks if the character in chr is inside the chaArray, and returns true if it is found.
-     * @param chaArray
-     * @param chr
+     * @param chaArray: char[]
+     * @param chr: char
      * @return boolean
      */
     private boolean isThereChar(char[] chaArray, char chr)
     {
         boolean bool = false;
-        for(int i=0; i < chaArray.length; i++) {
-            if(chr==chaArray[i])
+        for(int i=0; i < chaArray.length; i++) 
+        {
+            if(chr == chaArray[i])
             {
                  bool = true;
             }

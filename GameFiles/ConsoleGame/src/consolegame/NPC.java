@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package consolegame;
 
 import java.util.ArrayList;
@@ -11,7 +6,7 @@ import java.util.Random;
 
 /**
  *
- * @author Bruger
+ * @author René & Daniel
  */
 public class NPC extends Actor 
 {
@@ -21,7 +16,7 @@ public class NPC extends Actor
     
     /**
      * NPC constructor that gives it its health, xpGive and skills based on what level it is provided.
-     * @param level 
+     * @param level: lvl
      */
     public NPC(int lvl)
     {
@@ -63,7 +58,7 @@ public class NPC extends Actor
 
     /**
      * Gets the xp value the NPC is dropping upon getting killed.
-     * @return xpGive
+     * @return xpGive: int
      */
     public int getXpGive() 
     {

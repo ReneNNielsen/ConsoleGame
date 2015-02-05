@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package consolegame;
 
 /**
@@ -24,7 +19,7 @@ public class Player extends Actor
     
     /**
      * Returns the players xp amount as an int
-     * @return int
+     * @return int: xp
      */
     public int getXp() 
     {
@@ -34,9 +29,8 @@ public class Player extends Actor
     /**
      * Adds xp to the players xp amount. After it has been added it runs the private checkIfNewLevel() method, that 
      * levels the player up if it has reached the checkpoint for a new level.
-     * @param moreXp 
+     * @param moreXp: int
      */
-    
     public void addXp(int moreXp) 
     {
         xp += moreXp;
@@ -45,7 +39,7 @@ public class Player extends Actor
     
     /**
      * Gets the amount of xp required to raise to the players next level
-     * @return int
+     * @return int: xpToNextLvl
      */
     public int getXpToNextLevel() 
     {

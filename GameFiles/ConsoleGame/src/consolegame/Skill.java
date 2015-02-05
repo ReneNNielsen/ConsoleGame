@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package consolegame;
 
 import java.util.Random;
 
 /**
  *
- * @author Bruger
+ * @author René & Daniel
  */
 public class Skill 
 {
@@ -18,26 +13,37 @@ public class Skill
     protected int missChance;
     protected int critChance;
 
-    public Skill() 
-    {
-        
-    }
-    
+    /**
+     * Get the name of the skill
+     * @return String: name
+     */
     public String getName() 
     {
         return name;
     }
 
+    /**
+     * Get the damage of the skill
+     * @return double: damage
+     */
     public double getDamage() 
     {
         return damage;
     }
 
+    /**
+     * Get the missChance of the skill
+     * @return int: missChance
+     */
     public int getMissChance() 
     {
         return missChance;
     }
 
+    /**
+     * Get the critChance of the skill
+     * @return int: critChance
+     */
     public int getCritChance() 
     {
         return critChance;
