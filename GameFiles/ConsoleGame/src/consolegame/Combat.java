@@ -117,14 +117,13 @@ public class Combat
         }
         else
         {
-            int damageDone = (int)Math.round(npc.getSkillDamage(randomNumber));
-            /*
-            if(wasAttackCritical(npc.skills.get(skillNumber).getCritChance()))
+            int damageDone = (int)Math.round(npc.getSkillDamage(randomNumber));            
+            if(wasAttackCritical(npc.skills.get(randomNumber).getCritChance()))
             {
-                damageDone = (int)Math.round(player.getSkillDamage(skillNumber) * 2);           
+                damageDone = (int)Math.round(npc.getSkillDamage(randomNumber) * 2);           
                 combatLog += "CRITICAL HIT! ";
                 System.out.print("CRITICAL HIT! ");
-            } */           
+            }           
             playerHealthRemaining -= damageDone;
             combatLog +=npc.name + " did " + damageDone + " damage with " + npc.skills.get(randomNumber).name + " to " + player.name + "\n";
             System.out.println(npc.name + " did " + damageDone + " damage with " + npc.skills.get(randomNumber).name + " to " + player.name);
