@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package consolegame;
 
 import java.util.Random;
@@ -11,7 +6,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Bruger
+ * @author René & Daniel
  */
 public class Combat 
 {
@@ -21,6 +16,11 @@ public class Combat
     private int npcHealthRemaining = 0;
     private String combatLog = "";
     
+    /**
+     * Constructor of Combat
+     * @param player: Player
+     * @param npc: NPC
+     */
     public Combat(Player player, NPC npc)
     {
         this.player = player;
@@ -29,6 +29,11 @@ public class Combat
         npcHealthRemaining = npc.health;
     }
     
+    /**
+     * This method is used to start a Combat between the Player and a NPC. It checks which turn it is, and if the Player 
+     * has lost or won. Returns true when the Player wins, and false if the Player loses
+     * @return boolean
+     */
     public boolean doCombat()
     {
         boolean isPlayerTurn = true;
@@ -68,6 +73,10 @@ public class Combat
         }
     }
     
+    /**
+     * Method to display the players skills on a list and stats. If its the players turn in a combat the list of skills is shown
+     * @param isPlayerTurn: boolean 
+     */
     private void showStatsAndSkills(boolean isPlayerTurn)
     {
         System.out.println(combatLog);
@@ -95,6 +104,9 @@ public class Combat
         }
     }
     
+    /**
+     * Method that controls the NPC when it is its turn. It handles its chances of missing an attack and also if its a critical hit
+     */
     private void doNpcTurn()
     {
         int randomNumber = new Random().nextInt(npc.skills.size());
@@ -106,6 +118,13 @@ public class Combat
         else
         {
             int damageDone = (int)Math.round(npc.getSkillDamage(randomNumber));
+            /*
+            if(wasAttackCritical(npc.skills.get(skillNumber).getCritChance()))
+            {
+                damageDone = (int)Math.round(player.getSkillDamage(skillNumber) * 2);           
+                combatLog += "CRITICAL HIT! ";
+                System.out.print("CRITICAL HIT! ");
+            } */           
             playerHealthRemaining -= damageDone;
             combatLog +=npc.name + " did " + damageDone + " damage with " + npc.skills.get(randomNumber).name + " to " + player.name + "\n";
             System.out.println(npc.name + " did " + damageDone + " damage with " + npc.skills.get(randomNumber).name + " to " + player.name);
@@ -113,6 +132,9 @@ public class Combat
     
     }
 
+    /**
+     * Method that controls the output of what the player chooses to do under a battle. Handles critical hit / miss chance as well
+     */
     private void doPlayerTurn()
     {
         try {
@@ -156,6 +178,11 @@ public class Combat
         }
     }
     
+    /**
+     * This method uses the miss chance of the skill and returns a true/false if the attack missed or not 
+     * @param missChance: int
+     * @return boolean
+     */
     private boolean didAtackMiss(int missChance)
     {
         int randomNumber = new Random().nextInt(100);
@@ -166,6 +193,11 @@ public class Combat
         return false;
     }
     
+    /**
+     * This method uses the critical hit chance of the skill and returns a true/false if the attack was critical or not 
+     * @param critChance: int
+     * @return boolean
+     */
     private boolean wasAttackCritical(int critChance)
     {
         int randomNumber = new Random().nextInt(100);

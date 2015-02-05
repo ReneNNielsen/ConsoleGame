@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package consolegame;
 
 import java.awt.Point;
@@ -21,11 +16,10 @@ import javax.sound.sampled.LineEvent.Type;
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import sun.applet.Main;
 
 /**
  *
- * @author Bruger
+ * @author René & Daniel
  */
 public class Game 
 {
@@ -36,6 +30,7 @@ public class Game
     private static String applicationDir = "";
     
     /**
+     * Main method of ConsoleGame
      * @param args the command line arguments
      */
     public static void main(String[] args) 
@@ -46,12 +41,9 @@ public class Game
         game.doGame();
     }
     
-    public static void brClear()
-    {
-        br = new BufferedReader(new InputStreamReader(System.in));
-        
-    }
-    
+    /**
+     * Method that adds all the maps from the level folder of the game to the maplist 
+     */
     private void addMaps()
     {
         applicationDir = getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace("%20", " ");
@@ -73,6 +65,9 @@ public class Game
         System.out.println("Done");
     }
     
+    /**
+     * Clears the console screen
+     */
     public static void clearConsole()
     {
         try
@@ -98,6 +93,9 @@ public class Game
         
     }
     
+    /**
+     * This method controls the player movement and if the map should be drawn on the screen or not
+     */
     private void doGame()
     {
         boolean runGame = true;
@@ -168,6 +166,10 @@ public class Game
         }
     }
     
+    /**
+     * Method that loads the initial part of the game by showing instructions and creates the player object
+     * @throws IOException 
+     */
     private void initGame() throws IOException
     {
         System.out.println("How to use The Game:");
@@ -210,6 +212,12 @@ public class Game
         mapNumber = 0;
     }
     
+    /**
+     * Method that draws the map on the screen and detects if the player has hit a NPC and where the player is allowed to move and
+     * what happens when it hit different types of objects. This method also controls when to play music. Returns false if the 
+     * player loses a battle
+     * @return boolean
+     */
     private boolean writeMap()
     {
         MapLevel map = mapList.get(mapNumber);
@@ -285,7 +293,7 @@ public class Game
     }
     
     /**
-     * Take from http://stackoverflow.com/questions/577724/trouble-playing-wav-in-java/577926#577926
+     * Stolen from http://stackoverflow.com/questions/577724/trouble-playing-wav-in-java/577926#577926
      * @param clipFile
      * @throws IOException
      * @throws UnsupportedAudioFileException
