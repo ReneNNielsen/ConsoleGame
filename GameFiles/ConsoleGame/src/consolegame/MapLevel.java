@@ -61,7 +61,8 @@ public class MapLevel
      */
     public Point getStartPosition()
     {
-        return playerStartPosition;
+        Point startP = new Point(playerStartPosition.x,playerStartPosition.y);
+        return startP;
     }
 
     /**
