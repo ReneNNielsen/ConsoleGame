@@ -1,0 +1,26 @@
+ToDo:
+
+
+? - balance skills
+? - ved map load - replace tab med 4 mellemrum
+
+x - Critical hit ved NPC
+x - Gå tilbage i map
+x - generel gennemgang, forklaring af kode og oprydning
+x - kommentarer i kode
+x - Skills skal have mere damage
+x - Map skifte fucker
+x - Epic music
+x - Crit chance?
+x - lav evt. dmg til random i et interval
+x - start side, med controls osv.
+x - Vis XP til næste level 
+x - Hvis der ikke er flere maps, vis tillykke besked
+x - skill -> getSkillDamage
+x - fjern M når mob dør
+x - lav level skifter ($)
+x - Skriv dmg ved tekst under battle
+x - ved random skill check om den allerede er i listen
+x - Når man bliver level 2 falder ens hp
+x - flygt fra combat
+x - få skills løbende under level progress

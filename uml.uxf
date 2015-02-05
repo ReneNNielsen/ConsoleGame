@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="12.2">
-  <zoom_level>7</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>210</x>
-      <y>357</y>
-      <w>147</w>
-      <h>133</h>
+      <x>192</x>
+      <y>408</y>
+      <w>138</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>MapLevel
 --
@@ -15,215 +15,220 @@
 -npcs: List&lt;NPC&gt;
 -playerStartPosition: Point
 --
-+loadMap(String fileName)
-+getMap
-+getStartPlayerPosition()</panel_attributes>
++getMap(): String
++getNpcs(): List&lt;NPC&gt;
++getStartPosition(): Point
+-isThereChar(char[],char): boolean
++killNpc(NPC)
++loadMap(String)
+-mapObjectsSearch()
+-removeObjectsFromMap()
+
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>875</x>
-      <y>266</y>
-      <w>147</w>
-      <h>133</h>
+      <x>762</x>
+      <y>330</y>
+      <w>126</w>
+      <h>114</h>
     </coordinates>
-    <panel_attributes>/skill/
+    <panel_attributes>Skill
 --
-/#name: String/
-/#damage: double/
-/#missChance: int/
-/#warmupRounds: int/
+#name: String
+#damage: double
+#missChance: int
+#critChance: int
 --
 +getName(): String
 +getDamage(): double
 +getMisschance(): int
-+getWarmupRounds()
-+getRandomSkill(): Skill</panel_attributes>
++getCritChance(): int</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>875</x>
-      <y>455</y>
-      <w>147</w>
-      <h>133</h>
+      <x>762</x>
+      <y>492</y>
+      <w>126</w>
+      <h>114</h>
     </coordinates>
     <panel_attributes>SkillBite
 --
-
---</panel_attributes>
+--
++SkillBite()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>770</x>
-      <y>378</y>
-      <w>188</w>
-      <h>90</h>
+      <x>672</x>
+      <y>426</y>
+      <w>162</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>175;21;175;49;21;49;21;77</additional_attributes>
+    <additional_attributes>150;18;150;42;18;42;18;66</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>721</x>
-      <y>455</y>
-      <w>147</w>
-      <h>133</h>
+      <x>630</x>
+      <y>492</y>
+      <w>126</w>
+      <h>114</h>
     </coordinates>
     <panel_attributes>SkillPunch
 --
-
---</panel_attributes>
++SkillPunch()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1183</x>
-      <y>455</y>
-      <w>147</w>
-      <h>133</h>
+      <x>1026</x>
+      <y>492</y>
+      <w>126</w>
+      <h>114</h>
     </coordinates>
     <panel_attributes>SkillScratch
 --
-
---</panel_attributes>
+--
++SkillScratch()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1337</x>
-      <y>455</y>
-      <w>147</w>
-      <h>133</h>
+      <x>1158</x>
+      <y>492</y>
+      <w>126</w>
+      <h>114</h>
     </coordinates>
     <panel_attributes>SkillFart
 --
-
---</panel_attributes>
+--
++SkillFart()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1029</x>
-      <y>455</y>
-      <w>147</w>
-      <h>133</h>
+      <x>894</x>
+      <y>492</y>
+      <w>126</w>
+      <h>114</h>
     </coordinates>
     <panel_attributes>SkillUppercut
 --
-
---</panel_attributes>
+--
++SkillUppercut()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>567</x>
-      <y>455</y>
-      <w>147</w>
-      <h>133</h>
+      <x>498</x>
+      <y>492</y>
+      <w>126</w>
+      <h>114</h>
     </coordinates>
     <panel_attributes>SkillSlap
 --
-
---</panel_attributes>
+--
++SkillSlap()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>413</x>
-      <y>455</y>
-      <w>147</w>
-      <h>133</h>
+      <x>366</x>
+      <y>492</y>
+      <w>126</w>
+      <h>114</h>
     </coordinates>
     <panel_attributes>SkillKick
 --
-
---</panel_attributes>
+--
++SkillKick()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>616</x>
-      <y>378</y>
-      <w>342</w>
-      <h>90</h>
+      <x>540</x>
+      <y>426</y>
+      <w>294</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>329;21;329;49;21;49;21;77</additional_attributes>
+    <additional_attributes>282;18;282;42;18;42;18;66</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>462</x>
-      <y>378</y>
-      <w>496</w>
-      <h>90</h>
+      <x>408</x>
+      <y>426</y>
+      <w>426</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>483;21;483;49;21;49;21;77</additional_attributes>
+    <additional_attributes>414;18;414;42;18;42;18;66</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>924</x>
-      <y>378</y>
-      <w>188</w>
-      <h>90</h>
+      <x>804</x>
+      <y>426</y>
+      <w>162</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>21;21;21;49;175;49;175;77</additional_attributes>
+    <additional_attributes>18;18;18;42;150;42;150;66</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>924</x>
-      <y>378</y>
-      <w>342</w>
-      <h>90</h>
+      <x>804</x>
+      <y>426</y>
+      <w>294</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>21;21;21;49;329;49;329;77</additional_attributes>
+    <additional_attributes>18;18;18;42;282;42;282;66</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>924</x>
-      <y>378</y>
-      <w>496</w>
-      <h>90</h>
+      <x>804</x>
+      <y>426</y>
+      <w>426</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>21;21;21;49;483;49;483;77</additional_attributes>
+    <additional_attributes>18;18;18;42;414;42;414;66</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>924</x>
-      <y>378</y>
-      <w>34</w>
-      <h>90</h>
+      <x>804</x>
+      <y>426</y>
+      <w>30</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>21;21;21;49;21;77</additional_attributes>
+    <additional_attributes>18;18;18;42;18;66</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>567</x>
-      <y>245</y>
-      <w>147</w>
-      <h>133</h>
+      <x>498</x>
+      <y>312</y>
+      <w>126</w>
+      <h>114</h>
     </coordinates>
     <panel_attributes>NPC
 --
@@ -238,34 +243,36 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>140</x>
-      <y>182</y>
-      <w>147</w>
-      <h>133</h>
+      <x>132</x>
+      <y>222</y>
+      <w>126</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>Game
 --
+_-applicationDir: String_
 -mapList: List&lt;MapLevel&gt;
 -player: Player
--br: BufferedReader
+_+br: BufferedReader_
 -mapNumber: int
 --
-+Main()
+_+main()_
 -addMaps()
 _+clearConsole()_
 -doGame()
 -initGame()
 -writeMap(): boolean
+_-playClip(File)_
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>469</x>
-      <y>28</y>
-      <w>147</w>
-      <h>182</h>
+      <x>414</x>
+      <y>102</y>
+      <w>126</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>Actor
 --
@@ -279,6 +286,8 @@ _+clearConsole()_
 +getHealth(): int
 +getLevel(): int
 +getName(): String
++getRandomSkill(): Skill
++getSkills(): List&lt;Skill&gt;
 +setPosition(Point)
 +setHealth(int)
 +setLevel(int)
@@ -289,122 +298,135 @@ _+clearConsole()_
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>392</x>
-      <y>245</y>
-      <w>147</w>
-      <h>133</h>
+      <x>348</x>
+      <y>312</y>
+      <w>126</w>
+      <h>114</h>
     </coordinates>
     <panel_attributes>Player
 --
--xp: int
+#xp: int
+-xpToNextLvl: int
 --
-+move(int x, int y)</panel_attributes>
++Player()
++addXp(int)
+-checkIfNewLevel()
++getXp(): int
++getXpToNextLevel(): int
+-raiseStatsOneLevel()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>532</x>
-      <y>189</y>
-      <w>125</w>
-      <h>69</h>
+      <x>468</x>
+      <y>264</y>
+      <w>108</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>21;21;21;35;112;35;112;56</additional_attributes>
+    <additional_attributes>18;18;18;30;96;30;96;48</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>441</x>
-      <y>189</y>
-      <w>125</w>
-      <h>69</h>
+      <x>390</x>
+      <y>264</y>
+      <w>108</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>112;21;112;35;21;35;21;56</additional_attributes>
+    <additional_attributes>96;18;96;30;18;30;18;48</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>336</x>
-      <y>357</y>
-      <w>321</w>
-      <h>48</h>
+      <x>312</x>
+      <y>408</y>
+      <w>264</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=*
 m2= 1</panel_attributes>
-    <additional_attributes>21;35;308;35;308;21</additional_attributes>
+    <additional_attributes>18;30;252;30;252;18</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>266</x>
-      <y>224</y>
-      <w>139</w>
-      <h>34</h>
+      <x>240</x>
+      <y>294</y>
+      <w>120</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1= 1
 m2=1</panel_attributes>
-    <additional_attributes>21;21;84;21;126;21</additional_attributes>
+    <additional_attributes>18;18;72;18;108;18</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>595</x>
-      <y>133</y>
-      <w>356</w>
-      <h>146</h>
+      <x>522</x>
+      <y>216</y>
+      <w>306</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=3
 m2= 1</panel_attributes>
-    <additional_attributes>21;21;343;56;343;133</additional_attributes>
+    <additional_attributes>18;18;294;18;294;114</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>203</x>
-      <y>294</y>
-      <w>34</w>
-      <h>76</h>
+      <x>186</x>
+      <y>354</y>
+      <w>30</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1= *
 m2= 1</panel_attributes>
-    <additional_attributes>21;21;21;63</additional_attributes>
+    <additional_attributes>18;18;18;54</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>21</x>
-      <y>385</y>
-      <w>147</w>
-      <h>133</h>
+      <x>30</x>
+      <y>432</y>
+      <w>126</w>
+      <h>138</h>
     </coordinates>
     <panel_attributes>Combat
 --
 -player: Player
 -npc: NPC
+-combatLog: String
+-npcHealthRemaining: int
+-playerHealthRemaining: int
 --
+
 +Combat(Player,NPC)
 +doCombat(): bool
 -doNpcTurn()
 -doPlayerTurn()
+-didAttackMiss(int): bool
+-wasAttackCritical(int): bool
+-showStatsAndSkills(bool)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>42</x>
-      <y>252</y>
-      <w>111</w>
-      <h>146</h>
+      <x>48</x>
+      <y>318</y>
+      <w>96</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;</panel_attributes>
-    <additional_attributes>42;133;42;35;98;35</additional_attributes>
+    <additional_attributes>36;114;36;30;84;30</additional_attributes>
   </element>
 </diagram>
